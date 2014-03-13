@@ -36,7 +36,7 @@ Default(lib)
 Clean(lib, ['resources.data', 'config.log'])
 
 # Dist
-distfiles = ['README', 'ChangeLog', 'copyright', 'src']
+distfiles = ['README.md', 'LICENSE', 'src']
 tar = env.TarBZ2Dist('FAHWebClient', distfiles)
 Alias('dist', tar)
 AlwaysBuild(tar)
