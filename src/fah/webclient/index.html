@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Folding@home Web Control</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Oswald:700,400"/>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="header">
+  <h1><a href="index.html">Folding @ Home</a></h1>
+</div>
+
+<div id="cp" class="panel corner-all">
+
+  <div class="row panel-header">
+    <table id="menu"><tr>
+        <td class="left">WEB CONTROL</td>
+        <td class="middle">
+          <span>Share:</span>
+          <span>
+            <a href="#" class="email"><img src="images/mail.png"/></a>
+          </span>
+          <span>
+            <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffolding.stanford.edu&amp;t=Share+your+unused+computer+power+to+help+find+a+cure." class="facebook"><img src="images/facebook.png"/></a>
+          </span>
+          <span>
+            <a href="https://twitter.com/share?url=http%3A%2F%2Ffolding.stanford.edu&amp;text=Share+your+unused+computer+power+to+help+find+a+cure." class="twitter"><img src="images/twitter.png"/></a>
+          </span>
+          <span class="google-button">
+            <div class="g-plusone" data-size="standard"
+                 data-href="http://folding.stanford.edu/nacl/"></div>
+          </span>
+        </td>
+        <td class="right">
+          <span>
+            <a href="#" class="btn share-join" id="btn-learn">Learn</a>
+          </span>
+          <span>
+            <a class="btn btn-news"
+               href="http://folding.stanford.edu/home/blog">News</a>
+          </span>
+          <span>
+            <a class="btn btn-help" name="help" href="#">Help</a>
+          </span>
+        </td>
+    </tr></table>
+  </div>
+
+  <div class="row panel-top">
+    <div class="col-50">
+       <div class="col-left">
+          <div class="row">
+            <div class="col-50">
+
+              <div id="box-user">
+                <span>I'm folding as:<span>
+                <div class="hlarge" id="user-username"></div>
+                <div class="hlarge" id="user-team"></div>
+                <a href="#" id="btn-setupid">Change Identity</a>
+              </div>
+
+            </div>
+            <div class="col-50">
+
+              <div id="box-cause-selector">
+                <span>I support research fighting</span>
+                <select id="box-cause-id">
+                  <option value="ANY">Any disease</option>
+                  <option value="ALZHEIMERS">Alzheimer's</option>
+                  <option value="CANCER">Cancer</option>
+                  <option value="HUNTINGTONS">Huntington's</option>
+                  <option value="PARKINSONS">Parkinson's</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+       </div>
+    </div>
+    <div class="col-50">
+      <div class="col-right">
+
+        <div id="box-points-loading">Loading...</div>
+        <div id="box-points">
+          <span>Points earned</span>
+          <div class="clearfix">
+            <span id="box-points-counter">Unknown</span>
+            <a id="box-user-stats-link" href="#">(See stats)</a></span>
+          </div>
+          <div id="team-points">
+            <span id="box-points-counter-contributed">Unknown</span>
+            go to Team <span id="box-points-team">Unknown</span>'s total of
+            <span id="box-points-counter-team">Unknown</span>
+          </div>
+          <div id="no-team">Consider joining a team.</div>
+        </div>
+       </div>
+    </div>
+  </div>
+
+  <div class="row panel-pu" id="slots">
+      <ul class="box-pu"></ul>
+  </div>
+
+  <div class="row">
+    <div class="col-50">
+      <div class="col-left col-left-pu">
+
+        <div id="box-status" class="clearfix">
+          <div id="box-status-msg">Loading...</div>
+          <div id="box-status-points">
+            <span class="hlarge">-</span> Points per day
+          </div>
+        </div>
+        <p>My computer has <span id="box-status-time">unknown time</span> to
+        complete this work unit.</p>
+
+        <div id="box-all-slots">
+          <div id="box-power">
+            <div class="row">
+              <div class="col-50">
+                <div id="box-power-slider">
+                  <span class="hlarge">Power</span>
+                  <div id="slider"></div>
+                  <ul id="labels" class="clearfix">
+                    <li class="label-1">Light</li>
+                    <li class="label-2">Medium</li>
+                    <li class="label-3">Full</li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="col-50">
+                <div id="box-idle-selector">
+                  <span class="hlarge">When</span>
+                  <ul class="radio-selector">
+                    <li>
+                      <input id="not_idle" name="idle" type="radio" value="1"
+                    	     checked="checked">
+                      <label for="not_idle">
+                        <span></span>While I'm working
+                      </label>
+                    </li>
+                    <li>
+                      <input id="idle" name="idle" type="radio" value="2">
+                      <label for="idle"><span></span>Only when idle</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a id="btn-stop" href="#" class="button">Stop Folding</a>
+          <a id="btn-run" href="#" class="button" style="display:none">Start
+            Folding</a>
+          <p>Quitting the browser will not stop folding. Folding happens in a
+            background process on your computer through the program FAHClient
+            even when Web Control is closed.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-50">
+      <div class="col-right col-right-pu">
+
+        <table id="box-stats">
+          <tr>
+            <th class="hlarge" id="box-stats-wu"></th>
+            <th class="hlarge" id="box-stats-days"></th>
+            <th class="hlarge" id="box-stats-points" style="text-align:right">
+            </th>
+          </tr>
+          <tr>
+            <td>Work Unit (PRCG)</td>
+            <td>Work Unit (ETA)</td>
+            <td style="text-align:right">Estimated Points</td>
+          </tr>
+        </table>
+
+        <div id="box-project">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">&nbsp;</div>
+
+<div style="display:none">
+
+  <div id="help-popup" class="popup">
+    <h2>Help</h2>
+    <p class="abstract">Sorry you're having trouble. There are many online
+    resources to help you.</p>
+    <div class="row clearfix">
+      <div class="col-33 first">
+        <h4>FAQ</h4>
+        <p>Start here to find answers to <a
+        href="http://folding.stanford.edu/home/community-support/#faqs"
+       >Frequently Asked Questions</a>.</p>
+        <h4>Quick Tip</h4>
+        <p>On rare occasions, and especially with older laptops, you may
+          experience video lag, excessive heat, or fan noise. Simply move
+          the folding power slider down a notch or two.</p>
+      </div>
+      <div class="col-33">
+        <h4>Community Support</h4>
+        <p>The <a href="http://foldingforum.org/"
+        >Folding Forum</a> has a very active community of expert folders who
+        would be glad to help you with any problems you might have. It is also
+        a great place to get more involved.</p>
+      </div>
+      <div class="col-33">
+        <h4>Software Bugs</h4>
+        <p>Please <a class="report-bug" href="#">click here</a> to report
+          bugs.</p>
+        <p>To really dig in go to our <a
+        href="https://fah.stanford.edu/projects/FAHClient/"
+        >Client Development Project</a> page you can find technical information
+        about the software, report bugs and learn about the <a
+href="https://fah.stanford.edu/projects/FAHClient/wiki/ClientRemoteInterface"
+		target="_blank">3rd-party development API</a>.</p>
+      </div>
+    </div>
+    <p class="abstract center">For more about the science of protein folding and
+      the Folding@home project, <a
+      href="http://folding.stanford.edu/home/the-science/"
+      >click here</a>.</p>
+    <div class="center"> <a href="#" class="button green done">Done</a> </div>
+  </div>
+  
+
+  <div id="learn-popup" class="popup">
+    <h2>Learn More &amp; Join the Community</h2>
+    <p class="abstract">Scientists at Stanford University and around the world
+      utilize your donated computer time to better understand and develop cures
+      for some of humanity's worst diseases. Simply by running Folding@home
+      software you are aiding research for Alzheimer's, Huntington's, and many
+      cancers.</p>
+    <p class="abstract">People like you, from all over the globe, currently
+      donate the unused power of over a quarter of a million processors, forming
+      one of the world's most powerful distributed super-computers.</p>
+    <div class="row clearfix">
+      <div class="col-33 first">
+        <h4>The Science</h4>
+        <p>Proteins help fight disease by first assembling themselves or
+        "folding". When proteins misfold, there can be serious health
+        consequences.</p>
+        <p>If we better understand protein misfolding we can design drugs and
+        therapies to combat these illnesses.</p>
+        <p>See our <a href="http://folding.stanford.edu/home/the-science/"
+       >Folding Science page</a> and the <a
+        href="http://en.wikipedia.org/wiki/Protein_folding"
+        >Protein Folding Wikipedia page</a>.</p>
+      </div>
+      <div class="col-33">
+        <h4>The Software</h4>
+        <p>Folding@home software aids research by simulating protein folding.
+        The calculations are immense so we break them into small "work units"
+        and pass them to individual computers like yours to solve.</p>
+        <p>Stanford computers assemble data from thousands of work units into
+        meaningful answers to important scientific questions.</p>
+        <p>See the <a href="http://en.wikipedia.org/wiki/Folding@home"
+       >Folding@home Wikipedia page</a>.</p>
+      </div>
+      <div class="col-33">
+        <h4>Get Involved</h4>
+        <p>One of the best ways to help Folding@home is by recruiting your
+          friends and family. Start by sharing our project with them.</p>
+        <p>Then <a href="http://folding.stanford.edu/home/teams-stats/"
+       >join a team</a> or even <a
+        href="http://fah-web.stanford.edu/cgi-bin/createteam.pl"
+        >start your own team</a>. The more points you and your team earn, the
+        closer we come to finding cures.</p>
+        <p>Our non-profit organization also accepts <a
+        href="http://folding.stanford.edu/home/donate/"
+        >donations</a>.</p>
+      </div>
+    </div>
+    <div class="center"> <a href="#" class="button green done">Done</a> </div>
+  </div>
+
+
+  <div id="stop-popup" class="popup">
+    <h2>Stop Folding</h2>
+    <p>Would you like to stop folding now or finish the <br>
+      current work unit, get the points, then stop?</p>
+    <div>
+      <a href="#" class="button green cancel">Finish up, then stop</a>
+      <a href="#" class="button red stop">Stop now</a>
+    </div>
+  </div>
+
+
+  <div id="setupid-popup" class="popup">
+    <h2>Change Identity</h2>
+    <div class="row clearfix">
+      <div class="col-33 first">
+        <label>Name</label>
+        <input id="user" type="text" value="Anonymous" tabindex="1">
+        <p>If you choose a name, you can earn points for completing work units
+        (WU).</p>
+        <p class="info">Note: All fields are optional.</p>
+      </div>
+      <div class="col-33">
+        <label>Team Number</label>
+        <input id="team" type="text" value="" tabindex="2">
+        <p>If you have joined a team you should enter your team number above.
+        Then the points you earn to be added to your team's total.</p>
+        <p>For more information about teams and points see the
+        <a href="http://folding.stanford.edu/home/teams-stats/"
+       >Stats Page</a>.</p>
+      </div>
+      <div class="col-33">
+        <label>Passkey</label>
+        <input id="pass" type="password" value="" tabindex="3">
+        <p>Passkeys are used to add an extra level of security for those
+        competing for points.  Getting a passkey will also allow you to earn
+        bonus points for completing work early. <a
+        href="http://fah-web.stanford.edu/cgi-bin/getpasskey.py"
+        >Get a Passkey</a>.</p>
+        <p>For more information see <a
+        href="http://folding.stanford.edu/home/faq/faq-passkey/"
+        >Passkey FAQ</a>.</p>
+      </div>
+    </div>
+    <div class="center">
+    	<a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
+    	<a href="#" class="button green" id="setupid-btn-save">Save</a>
+    </div>
+  </div>
+
+  <div id="disconnected" title="Folding@home Disconnected">
+	<p>The Folding@home software on your computer has most likely stopped.</p>
+	<p>Please first restart it, then reload this page.</p>
+  </div>
+
+
+  <div id="reopened" title="Web Control Halted">
+	<p>Folding@home Web Control was reopened in your browser in another
+	  window or tab. This instance has been halted.</p>
+  </div>
+
+
+  <div id="bug-submission-dialog"
+       title="Submitting Bug Report. Please wait. . .">
+	<img src="images/report-bug.png" width="113" height="108"/>
+	<iframe id="bug-iframe" name="bug-iframe"></iframe>
+  </div>
+
+  <div id="bug-dialog" title="Submit a Bug Report">
+	<center><img src="images/report-bug.png" width="113" height="108"/></center>
+	<form method="post" target="bug-iframe"
+        action="http://folding.stanford.edu/bugreport.php">
+	  <table>
+        <tr><th>Name:</th><td class="user"></td>
+          <input name="user" hidden="true"/>
+		</tr>
+		<tr>
+          <th>Team:</th> <td class="team"></td>
+		  <input name="team" hidden="true"/>
+		</tr>
+		<tr>
+		  <th>Category:</th>
+		  <td>
+			<select name="category">
+			  <option value="choose" selected>-- Please choose --</option>
+			  <option value="web_control">Advanced Control defect</option>
+			  <option value="cosmetic">Cosmetic defect</option>
+			  <option value="cpu">CPU folding problem</option>
+			  <option value="conectivity">Connectivity issue</option>
+			  <option value="documentation">Documentation</option>
+			  <option value="enhancement">Enhancement request</option>
+			  <option value="gpu">GPU folding problem</option>
+			  <option value="install">Install problem</option>
+              <option value="overuse">Resources overutilized</option>
+              <option value="underuse">Resources underutilized</option>
+			  <option value="uninstall">Uninstall problem</option>
+			  <option value="web_control">Web Control defect</option>
+			</select>
+		</td></tr>
+		<tr class="description">
+          <td colspan="2"><b>Please provide a brief description:</b>
+            <textarea name="description" rows="4" maxlength="1024"
+                      ></textarea>
+          </td>
+        </tr>
+	  </table>
+	  <input name="ts" type="hidden"/>
+	  <input name="log" type="hidden"/>
+	</form>
+	<div id="bug-disclaimer">
+	  <p>
+		<b>Disclaimer:</b> When you submit this form your
+		Folding@home user name, team, all or portions of the log
+		files produced by the Folding@home software and all the
+		information you provide in this form will be stored
+		indefinitely on servers at Stanford University.  Your IP
+		address will be logged but not made public.  <b>Do not
+		  include passwords, copyrighted material or any other
+		  information which you do not want to be made public.
+		</b>
+	  </p>
+	  <p>
+		By submitting this form you acknowledge that you are
+		making said information publicly available on the Internet
+		and agree to let Stanford, it's partners and members of
+		foldingforum.org use said information for the purpose of
+		improving the Folding@home software.  The collected
+		information will not be used for advertising or tracking
+		your activity.  If you do not agree with these terms
+		please do not submit this forum and instead press the
+		Cancel button now.
+	  </p>
+	</div>
+    <p>To see a list of bug reports submitted from this IP address click
+      <a href="http://folding.stanford.edu/bugreport.php">here</a>.</p>
+  </div>
+
+  <div id="unconfigured">
+	<h2>Welcome to Folding@home. Please read this.</h2>
+	<p style="text-align: left">The program "FAHClient" is actually idling
+	  in the background on your computer right now. You can start folding as
+	  "Anonymous" or set up an identity and earn points.</p>
+	<p style="text-align: left">When you quit this browser, FAHClient will
+	  continue to run.  For easy access in the future we recommend you
+	  <u>bookmark this page</u> by pressing Ctrl-D now.</p>
+	<p style="text-align: left">The default settings assume you are using
+      a laptop and set the power usage to be lower than you might want for
+      other computers.  You can always make adjustments.</p>
+	<br/>
+	<div class="row clearfix">
+	  <div class="col-50">
+		<ul class="radio-selector">
+		  <li>
+		    <input id="account_type1" name="account_type" type="radio" 
+		           value="1" checked="checked">
+		    <label
+		       for="account_type1"><span></span>Fold as Anonymous</label>
+		  </li>
+		  <li>
+		    <input id="account_type2" name="account_type" type="radio"
+		           value="2">
+		    <label
+		       for="account_type2"><span></span>Set up an identity</label>
+		  </li>
+		</ul>
+	  </div>
+	  <div class="col-50">
+        <a href="#" class="button green large" id="btn-select-id"
+           >Start Folding</a>
+      </div>
+	</div>
+  </div>
+  
+  <div id="browser-warn">
+    <p style="text-align: left">
+      This Web browser may not fully support all the features need by
+      Folding@home.  If you experience problems please upgrade to the
+      listed version or newer of one of the following browsers:
+    </p>
+    <ul>
+      <li><a href="http://google.com/chrome/">Chrome</a> 23+</li>
+      <li><a href="http://mozilla.org/">Firefox</a> 16+</li>
+      <li><a href="http://apple.com/safari/">Safari</a> 5.1+</li>
+      <li><a href="http://microsoft.com/ie/">Internet Explorer</a> 9+</li>
+    </ul>
+  </div>
+  
+  <div id="project-description" class="popup"></div>
+</div>
+<div id="overlay">Web Control sleeping. . .</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/libs/jquery.selectbox-0.2.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+<script src="js/intercom.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

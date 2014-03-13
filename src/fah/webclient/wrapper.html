@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Local Folding@home Web Control</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="canonical" href="http://folding.stanford.edu/client/"/>
+	
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	
+    <style type="text/css">
+      /*
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+     }*/
+
+      a img {
+        border: none;
+      }
+
+      #loading {
+        visibility: hidden;
+        /*height: 15em;
+        padding: 1em;*/
+        z-index: 1;
+      }
+
+      #frame {
+        visibility: hidden;
+        border: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        background: #68b;
+        background-image:
+          linear-gradient(left, #57c 15%, #68c 30%, #68b 81%);
+        background-image:
+          -o-linear-gradient(left, #57c 15%, #68c 30%, #68b 81%);
+        background-image:
+          -moz-linear-gradient(left, #57c 15%, #68c 30%, #68b 81%);
+        background-image:
+          -webkit-linear-gradient(left, #57c 15%, #68c 30%, #68b 81%);
+        background-image:
+          -ms-linear-gradient(left, #57c 15%, #68c 30%, #68b 81%);
+      }
+
+      #disconnected {display: none; text-align: left;}
+      .no-close .ui-dialog-titlebar-close {display: none;}
+    </style>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js">
+    </script>
+    <link rel="stylesheet"
+href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/smoothness/jquery-ui.css"/>
+    <script
+       src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"/>
+    </script>
+  </head>
+  <body>
+  
+    <noscript>
+      <h1>The Folding@home client requires a JavaScript enabled browser!</h1>
+      <div><a href="http://folding.stanford.edu/">
+        <img alt="Folding@home log"
+             src="http://folding.stanford.edu/pub/images/FAHLogo-128.png"/>
+      </a></div>
+      <p>Your browser either does not support JavaScript or it has been
+        disabled.  <a href="http://enable-javascript.com/">Click here to learn
+          how to enable JavaScript.</a></p>
+      <p>Please note that
+        <a href="http://en.wikipedia.org/wiki/JavaScript">JavaSript</a>
+        is not the same thing as
+        <a href="http://en.wikipedia.org/wiki/Java_(programming_language)"
+           >Java</a>.</p>
+    </noscript>
+    
+    <div id="loading">
+		<div class="header">
+		  <h1><a href="index.html">Folding @ Home</a></h1>
+		</div>
+	
+		<div class="splash corner-all">
+		  <div class="splash-content"> <img src="images/template/logo_lsju.png">
+			<p>Connecting to the Stanford University <br>
+			  servers to check on your progress and see if your <br>
+			  computer is ready to solve a new problem.</p>
+			<p>Please wait while the Folding@home Control Panel launches from
+			your computer. It will display here in the web browser when it's
+			ready.</p>
+			<abbr title="Press Crtl+D">Bookmark this page.</abbr></div>
+		</div>
+	</div>
+
+    <!--
+    <div id="loading">
+      <h1>Connecting to your Folding@home client. . .
+        <span id="countdown"></span></h1>
+      <div><a href="http://folding.stanford.edu/">
+        <img alt="Folding@home logo"
+             src="http://folding.stanford.edu/pub/images/FAHLogo-128.png"/>
+      </a></div>
+      <p>
+        If you have not already installed Folding@home client version 7.3.0 or
+        newer on this computer then please do so.
+      </p>
+      <h2><a href="http://folding.stanford.edu/">Click here to install
+          Folding@home.</a></h2>
+    </div>
+    -->
+    
+    <iframe id="frame" allowTransparency="true" src="about:blank"></iframe>
+    <script type="text/javascript">
+      //<![CDATA[
+      $(function() {
+        var url = 'http://127.0.0.1:7396/';
+        var done = false;
+        var ping = false;
+        var frame = $('#frame');
+        //var label = $('#countdown');
+        
+        // Javascript is running unhide dynamic content
+        $('#loading').css('visibility', 'visible');
+
+        function not_connected() {
+          $('#disconnected').dialog({
+            resizable: false, width: 520, modal: true,
+            dialogClass: 'no-close', closeOnEscape: false,
+            beforeClose: function() {return false;},
+            buttons: {'Reload Page?': function() {location.reload();}}
+          });
+        }
+
+        function failed() {
+          if (done) return;
+          //label.text('failed');
+          done = true;
+          not_connected();
+        }
+
+		/*
+        // Setup timeout counter
+        var count = 30;
+        var interval = setInterval(function () {
+          count--;
+          label.text(count + 'sec');
+
+          if (done) {
+            clearInterval(interval);
+            return;
+          }
+
+          // Timeout
+          if (count == 0) {
+            done = true;
+            clearInterval(interval);
+            if (!ping) {
+              label.text('timed out');
+              not_connected();
+            }
+          }
+        }, 1000);
+		*/
+		
+        // First test the connection with a jsonp ping
+        $.ajax({url: url + 'ping', dataType: 'jsonp', timeout: 31000,
+                error: failed, success: function (data) {
+          if (data != 'ok' && typeof(data.version) == 'undefined') {
+            failed();
+            return;
+          }
+          ping = true;
+
+          if (typeof(data.version) != 'undefined')
+            document.title += ' - Version ' + data.version;
+
+          frame.load(function() {
+            if (done) return;
+            frame.css('visibility', 'visible');
+            $('#loading').slideUp('slow');
+            done = true;
+          });
+
+          // Start the real page load
+          frame.attr('src', url + '?nocache=' + Math.random());
+         }});
+      });
+      //]]>
+    </script>
+
+    <div id="disconnected" title="Client Connection Timed Out">
+      <p>Your browser was unable to connect to a Folding@home client running
+        on your computer.</p>
+      <ol>
+        <li><a href="http://folding.stanford.edu/">Install the Folding@home
+            client.</a></li>
+        <li>Make sure your Folding@home client is running.</li>
+        <li>Reload this page.</li>
+      </ol>
+    </div>
+  </body>
+</html>
