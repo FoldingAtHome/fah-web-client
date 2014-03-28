@@ -1,10 +1,16 @@
 from SCons.Script import *
-import config
-
-deps = ['cbang']
 
 
 def configure(conf):
     env = conf.env
+    home = env.CBCheckHome()
     if home: env.AppendUnique(LIBPATH = [home])
-    config.require_lib(conf, 'FAHWebClientResources')
+    conf.CBRequireLib('FAHWebClientResources')
+
+
+def generate(env):
+    env.CBAddConfigTest(configure)
+    env.CBLoadTools('cbang')
+
+def exists():
+    return True
