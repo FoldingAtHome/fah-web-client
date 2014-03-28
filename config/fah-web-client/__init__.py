@@ -3,14 +3,14 @@ from SCons.Script import *
 
 def configure(conf):
     env = conf.env
-    home = env.CBCheckHome()
-    if home: env.AppendUnique(LIBPATH = [home])
-    conf.CBRequireLib('FAHWebClientResources')
+    conf.CBCheckHome('fah-web-client', lib_suffix = '')
+    conf.CBRequireLib('fah-web-client-resources')
 
 
 def generate(env):
-    env.CBAddConfigTest(configure)
+    env.CBAddConfigTest('fah-web-client', configure)
     env.CBLoadTools('cbang')
+
 
 def exists():
     return True

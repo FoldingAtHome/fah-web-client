@@ -28,7 +28,7 @@ conf.Finish()
 
 # Resources
 res = env.Resources('resources.cpp', ['#/src/fah/webclient'])
-lib = env.Library('FAHWebClientResources', res)
+lib = env.Library('fah-web-client-resources', res)
 Precious(lib)
 Default(lib)
 
