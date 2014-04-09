@@ -7,15 +7,13 @@ try:
 except Exception, e:
     raise Exception, 'Have you set CBANG_HOME?\n' + str(e)
 
-env.CBLoadTools('compiler resources dist cbang')
+env.CBLoadTools('compiler resources dist cbang fah-client-version')
 conf = env.CBConfigure()
 
 # Version
-version = open('version/version.txt', 'r').read().strip()
-major, minor, revision = version.split('.')
+env.FAHClientVersion()
 
 # Config vars
-env.Replace(PACKAGE_VERSION = version)
 env.Replace(RESOURCES_NS = 'FAH::WebClient')
 
 # Packaging

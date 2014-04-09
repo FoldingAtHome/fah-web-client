@@ -26,3 +26,11 @@
 *.DS_Store
 *.swp
 *.out
+
+# Python
+*.pyc
+
+# Scons
+.sconf_temp
+.sconsign.dblite
+config.log
