@@ -590,6 +590,7 @@ function update_slot(entry) {
     }
 
     // ETA
+    if (entry.streaming) entry.eta = 'Streaming';
     if (entry.eta !== slot.eta) {
         if (is_active_slot(id)) $('#box-stats-days').text(entry.eta);
         slot.eta = entry.eta;
