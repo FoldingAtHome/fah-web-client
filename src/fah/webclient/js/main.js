@@ -1,7 +1,7 @@
 /************************************ Globals *********************************/
 fah = {
-    stats_url: 'http://folding.stanford.edu/stats.py',
-    project_url: 'http://folding.stanford.edu/project-jsonp.py',
+    stats_url: 'http://foldingathome.org/stats.py',
+    project_url: 'http://foldingathome.org/project-jsonp.py',
 
     timestamp: new Date().getTime(),
     version: null,
@@ -40,8 +40,8 @@ fah = {
         running: 'All systems go.',
         paused: 'Waiting for the computer to idle.',
         stopping: ' Click Start Folding to continue folding again.',
-        download: 'Getting a new Work Unit from Stanford.',
-        upload: 'Work unit completed!  Uploading to Stanford.',
+        download: 'Getting a new Work Unit from Folding@home.',
+        upload: 'Work unit completed!  Uploading to Folding@home.',
         ready: 'Ready.',
         finishing: 'Will pause once the current Work Unit is completed.'
     }
@@ -1288,10 +1288,10 @@ $(function() {
     // Email Link
     var subject = 'Our unused computer power can help find a cure.';
     var body = 'Here is a site where we can share our unused computer power ' +
-        'to help Stanford University professors find cures for diseases like ' +
+        'to help disease researchers find cures for diseases like ' +
         'Alzheimer\'s, Cancer, and Parkinson\'s. It only takes about 5 ' +
-        'minutes to join the cause.\n\n Click here to watch the video: ' +
-        'http://folding.stanford.edu';
+        'minutes to join the cause.\n\n Find at more at ' +
+        'https://foldingathome.org/';
 
     $('a.email').attr({
         href:
