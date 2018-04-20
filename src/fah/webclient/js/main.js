@@ -1,7 +1,7 @@
 /************************************ Globals *********************************/
 fah = {
-    stats_url: 'http://foldingathome.org/stats.py',
-    project_url: 'http://foldingathome.org/project-jsonp.py',
+    stats_url: 'http://apps.foldingathome.org/stats.py',
+    project_url: 'http://apps.foldingathome.org/project-jsonp.py',
 
     timestamp: new Date().getTime(),
     version: null,
