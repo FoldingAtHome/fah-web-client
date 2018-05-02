@@ -375,7 +375,7 @@ function check_stats(now) {
 
 
 function update_stats(data) {
-    var url = fah.user_stats_url + '?qtype=userpage&username=' + fah.user;
+    var url = fah.user_stats_url + '/donor/' + fah.user;
     $('#box-points a').attr({href: url});
 
     $('#box-points-counter').text(number_with_commas(data.earned));
