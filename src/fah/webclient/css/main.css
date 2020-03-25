@@ -883,8 +883,3 @@ a.btn:hover {
       height: 40px;
   }
 }
-
-#webControlHeader{
-    display: flex;
-    align-items: center;
-}
