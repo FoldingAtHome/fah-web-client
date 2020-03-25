@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -20,7 +15,7 @@
   <link rel="stylesheet" href="./css/main.css">
 
   <!-- Oswald Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap">
   <!-- Font Awesome -->
   <link id="fontawesome" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap CSS -->
@@ -45,42 +40,58 @@
 
 <body>
   <div class="header">
-    <h1><a href="index.html">Folding @ Home</a></h1>
+    <h1><a>Folding @ Home</a></h1>
   </div>
 
   <div id="cp" class="panel corner-all container">
 
-    <div id="menu" class="row panel-header">
-      <div class="one-third column left">
-        <span class="sub-heading">WEB CONTROL</span>
-      </div>
-      <div class="one-third column center">
-        <span class="share-text">Share:</span>
-        <span>
-          <!--Email-->
-          <button id="emailButton" type="button" class="btn btn-email">
-            <i class="fas fa-envelope"></i>
-          </button>
-          <!--
-          <a href="#" class="email"><img src="images/mail.png" /></a>
-        -->
-        </span>
-        <span>
-          <!--Facebook-->
-          <button type="button" class="btn btn-fb" onclick="location.href='https:\/\/www.facebook.com/sharer.php?u=https%3A%2F%2Ffoldingathome.org&amp;t=Share+your+unused+computer+power+to+help+find+a+cure.'">
-            <i class="fab fa-facebook-f"></i>
-          </button>
-        </span>
-        <span>
-          <!--Twitter-->
-          <button type="button" class="btn btn-tw" onclick="location.href='https:\/\/twitter.com/share?url=https%3A%2F%2Ffoldingathome.org&amp;text=Share+your+unused+computer+power+to+help+find+a+cure.'">
-            <i class="fab fa-twitter"></i>
-          </button>
-      </div>
-      <div class="one-third column right">
-        <span><a href="#" class="btn share-join" id="btn-learn">Learn</a></span><span><a class="btn btn-news"
-            href="https://foldingathome.org/news/">News</a></span><span><a class="btn btn-help" name="help"
-            href="#">Help</a></span>
+    <div class="container m-auto p-2">
+      <div class="row m-0">
+        <div class="col justify-content-start">
+          <div class="row m-0 justify-content-start h-100">
+            <h1 id="webControlHeader" class="m-0">WEB CONTROL</h1>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row m-0 justify-content-center">
+            <div>
+              <!-- Email -->
+              <!-- broken fix in js-->
+              <button id="emailButton" type="button" class="btn btn-email">
+                <i class="fas fa-envelope"></i>
+              </button>
+            </div>
+            <div>
+              <!-- Facebook -->
+              <button type="button" class="btn btn-fb"
+                onclick="location.href='https:\/\/www.facebook.com/sharer.php?u=https%3A%2F%2Ffoldingathome.org&amp;t=Share+your+unused+computer+power+to+help+find+a+cure.'">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+            </div>
+            <div>
+              <!-- Twitter -->
+              <button type="button" class="btn btn-tw"
+                onclick="location.href='https:\/\/twitter.com/share?url=https%3A%2F%2Ffoldingathome.org&amp;text=Share+your+unused+computer+power+to+help+find+a+cure.'">
+                <i class="fab fa-twitter"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row m-0 justify-content-end">
+            <!-- have to attach to modal-->
+            <button type="button" class="btn">Learn
+              <i class="fab fa-education"></i>
+            </button>
+            <button type="button" class="btn btn-tw" onclick="location.href='https:\/\/foldingathome.org/news/'">News
+              <i class="fab fa-news"></i>
+            </button>
+            <!-- have to attach to modal-->
+            <button type="button" class="btn">Help
+              <i class="fab fa-help"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -91,8 +102,8 @@
             <div class="five columns">
               <div id="box-user">
                 <div class="panel-top-heading">I'm folding as...</div>
-                <div id="user-username" class="hlarge"></div>
-                <div id="user-team" class="hlarge"></div>
+                <div id="user-username" class="hlarge">User</div>
+                <div id="user-team" class="hlarge">Team</div>
                 <a href="#" id="btn-setupid">Change Identity</a>
               </div>
             </div>
