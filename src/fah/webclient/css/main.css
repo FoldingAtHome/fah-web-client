@@ -72,13 +72,6 @@ label {
 .clearfix:after, .row:after {clear: both}
 .clearfix, .row {*zoom: 1}
 
-.header {
-    max-width: 970px;
-    text-align: center;
-    margin: auto;
-    padding: 20px;
-    position: relative;
-}
 .header h1 {
     width: 413px;
     max-width: 100%;
@@ -890,8 +883,6 @@ a.btn:hover {
       height: 40px;
   }
 }
-
-
 
 #webControlHeader{
     display: flex;
