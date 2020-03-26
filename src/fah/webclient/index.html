@@ -61,7 +61,7 @@
           </div>
           <div class="row m-0">
             <div class="col">
-              <div class="row m-0">
+              <div class="row m-0 justify-content-start">
                 <div>
                   <!-- Email -->
                   <!-- broken fix in js-->
@@ -72,14 +72,14 @@
                 <div>
                   <!-- Facebook -->
                   <button type="button" class="btn btn-fb"
-                    onclick="location.href='https:\/\/www.facebook.com/sharer.php?u=https%3A%2F%2Ffoldingathome.org&amp;t=Share+your+unused+computer+power+to+help+find+a+cure.'">
+                    onclick="window.open('https:\/\/www.facebook.com/sharer.php?u=https%3A%2F%2Ffoldingathome.org&amp;t=Share+your+unused+computer+power+to+help+find+a+cure.', '_blank')">
                     <i class="fab fa-facebook-f white-icon"></i>
                   </button>
                 </div>
                 <div>
                   <!-- Twitter -->
                   <button type="button" class="btn btn-tw"
-                    onclick="location.href='https:\/\/twitter.com/share?url=https%3A%2F%2Ffoldingathome.org&amp;text=Share+your+unused+computer+power+to+help+find+a+cure.'">
+                    onclick="window.open('https:\/\/twitter.com/share?url=https%3A%2F%2Ffoldingathome.org&amp;text=Share+your+unused+computer+power+to+help+find+a+cure.', '_blank')">
                     <i class="fab fa-twitter white-icon"></i>
                   </button>
                 </div>
@@ -89,8 +89,7 @@
               <div class="row m-0 justify-content-end">
                 <button type="button" class="btn bg-white" data-toggle="modal" data-target="#help_modal">Help</button>
                 <button type="button" class="btn bg-white" data-toggle="modal" data-target="#learn_modal">Learn</button>
-                <button type="button" class="btn bg-white"
-                  onclick="location.href='https:\/\/foldingathome.org/news/'">News</button>
+                <button type="button" class="btn bg-white" onclick="window.open('https:\/\/foldingathome.org/news/', '_blank')">News</button>
               </div>
             </div>
           </div>
@@ -142,6 +141,7 @@
       </section>
     </div>
   </main>
+
   <div class="row panel-pu" id="slots">
     <ul class="box-pu"></ul>
   </div>
