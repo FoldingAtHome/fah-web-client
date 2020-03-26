@@ -425,42 +425,56 @@
     </div>
   </div>
 
-
-  <div style="display:none">
-
-    <div id="setupid-popup" class="popup">
-      <h2>Change Identity</h2>
-      <div class="row clearfix">
-        <div class="one-third column">
-          <label>Name</label>
-          <input id="user" type="text" value="Anonymous" tabindex="1">
-          <p>If you choose a name, you can earn points for completing work units
-            (WU).</p>
-          <p class="info">Note: All fields are optional.</p>
+  <!-- Identity Modal -->
+  <div class="modal fade" id="identity_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">User Identity</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="one-third column">
-          <label>Team Number</label>
-          <input id="team" type="text" value="" tabindex="2">
-          <p>If you have joined a team you should enter your team number above.
-            Then the points you earn to be added to your team's total.</p>
-          <p>For more information about teams and points see the
-            <a href="https://stats.foldingathome.org/">Stats Page</a>.</p>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <h3>Name</h3>
+              <input id="user" type="text" value="Anonymous" tabindex="1">
+              <p>If you choose a name, you can earn points for completing work units
+                (WU).</p>
+            </div>
+            <div class="col">
+              <h3>Team Number</h3>
+              <input id="team" type="text" value="" tabindex="2">
+              <p>If you have joined a team you should enter your team number above.
+                Then the points you earn to be added to your team's total.</p>
+              <p>For more information about teams and points see the
+                <a href="https://stats.foldingathome.org/">Stats Page</a>.</p>
+            </div>
+            <div class="col">
+              <div class="one-third column">
+                <h3>Passkey</h3>
+                <input id="pass" type="password" value="" tabindex="3">
+                <p>Passkeys are used to add an extra level of security for those
+                  competing for points. Getting a passkey will also allow you to earn
+                  bonus points for completing work early. <a href="https://apps.foldingathome.org/paskey/create/">Get a
+                    Passkey</a>.</p>
+                <p>For more information see <a href="https://foldingathome.org/passkey/">Passkey FAQ</a>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-sm">Save</button>
+          </div>
         </div>
-        <div class="one-third column">
-          <label>Passkey</label>
-          <input id="pass" type="password" value="" tabindex="3">
-          <p>Passkeys are used to add an extra level of security for those
-            competing for points. Getting a passkey will also allow you to earn
-            bonus points for completing work early. <a href="https://apps.foldingathome.org/paskey/create/">Get a
-              Passkey</a>.</p>
-          <p>For more information see <a href="https://foldingathome.org/passkey/">Passkey FAQ</a>.</p>
-        </div>
-      </div>
-      <div class="center">
-        <a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
-        <a href="#" class="button green" id="setupid-btn-save">Save</a>
       </div>
     </div>
+  </div>
+
+
+  <div style="display:none">
 
     <div id="bug-submission-dialog" title="Submitting Bug Report. Please wait. . .">
       <img src="images/report-bug.png" width="113" height="108" />
