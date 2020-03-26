@@ -334,22 +334,99 @@
     </div>
   </div>
 
-
-  <div style="display:none">
-
-
-
-
-    <div id="stop-popup" class="popup">
-      <h2>Stop Folding</h2>
-      <p>Would you like to stop folding now or finish the
-        current work unit, get the points, then stop?</p>
-      <div>
-        <a href="#" class="button green cancel">Finish up, then stop</a>
-        <a href="#" class="button red stop">Stop now</a>
+  <!-- Stop Modal -->
+  <div class="modal fade" id="stop_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Stop Folding</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to stop folding now or finish the
+            current work unit, get the points, then stop?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Stop now</button>
+          <button type="button" class="btn btn-primary btn-sm">Finish up, then stop</button>
+        </div>
       </div>
     </div>
+  </div>
 
+  <!-- Disconnected Modal -->
+  <div class="modal fade" id="disconnected_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Disconnected</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>The Folding@home software on your computer has most likely stopped.</p>
+          <p>Please first restart it, then reload this page.</p>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Halt Modal -->
+  <div class="modal fade" id="halt_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Halt</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Folding@home Web Control was reopened in your browser in another
+            window or tab. This instance has been halted.</p>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browser Warning Modal -->
+  <div class="modal fade" id="browser_warning_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Browser Incompatibility</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            This Web browser may not fully support all the features need by
+            Folding@home. If you experience problems please upgrade to the
+            listed version or newer of one of the following browsers:
+          </p>
+          <ul>
+            <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
+            <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
+            <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
+            <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="display:none">
 
     <div id="setupid-popup" class="popup">
       <h2>Change Identity</h2>
@@ -384,18 +461,6 @@
         <a href="#" class="button green" id="setupid-btn-save">Save</a>
       </div>
     </div>
-
-    <div id="disconnected" title="Folding@home Disconnected">
-      <p>The Folding@home software on your computer has most likely stopped.</p>
-      <p>Please first restart it, then reload this page.</p>
-    </div>
-
-
-    <div id="reopened" title="Web Control Halted">
-      <p>Folding@home Web Control was reopened in your browser in another
-        window or tab. This instance has been halted.</p>
-    </div>
-
 
     <div id="bug-submission-dialog" title="Submitting Bug Report. Please wait. . .">
       <img src="images/report-bug.png" width="113" height="108" />
@@ -504,19 +569,6 @@
       </div>
     </div>
 
-    <div id="browser-warn">
-      <p style="text-align: left">
-        This Web browser may not fully support all the features need by
-        Folding@home. If you experience problems please upgrade to the
-        listed version or newer of one of the following browsers:
-      </p>
-      <ul>
-        <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
-        <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
-        <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
-        <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
-      </ul>
-    </div>
 
     <div id="project-description" class="popup"></div>
   </div>
