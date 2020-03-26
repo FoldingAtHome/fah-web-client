@@ -265,7 +265,8 @@
             </div>
             <div class="col">
               <h4>Software Bugs</h4>
-              <p>Please <a class="report-bug" href="#">click here</a> to report bugs.</p>
+              <p>Please click below to report bugs.</p>
+              <button type="button" class="btn bg-white" data-toggle="modal" data-target="#bug_submission_modal" data-dismiss="modal">Submit Bug</button>
             </div>
           </div>
           <p class="text-center">For more about the science of protein folding and
@@ -516,84 +517,97 @@
       </div>
     </div>
   </div>
-
+  
+  <!-- Bug Submission Modal -->
+  <div class="modal fade" id="bug_submission_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Submit a Bug Report</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+          <div class="md-form mb-5">
+            <input type="text" id="form34" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form34">Your name</label>
+          </div>
+  
+          <div class="md-form mb-5">
+            <input type="email" id="form29" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form29">Your Team</label>
+          </div>
+  
+          <div class="md-form mb-5">
+            <a class="btn btn-primary dropdown-toggle m-0" type="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Category</a>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" value="choose" selected>-- Please choose --</button>
+              <button class="dropdown-item" value="web_control">Advanced Control defect</button>
+              <button class="dropdown-item" value="cosmetic">Cosmetic defect</button>
+              <button class="dropdown-item" value="cpu">CPU folding problem</button>
+              <button class="dropdown-item" value="conectivity">Connectivity issue</button>
+              <button class="dropdown-item" value="documentation">Documentation</button>
+              <button class="dropdown-item" value="enhancement">Enhancement request</button>
+              <button class="dropdown-item" value="gpu">GPU folding problem</button>
+              <button class="dropdown-item" value="install">Install problem</button>
+              <button class="dropdown-item" value="overuse">Resources overutilized</button>
+              <button class="dropdown-item" value="underuse">Resources underutilized</button>
+              <button class="dropdown-item" value="uninstall">Uninstall problem</button>
+              <button class="dropdown-item" value="web_control">Web Control defect</button>
+            </div>
+          </div>
+  
+          <div class="md-form mb-5">
+            <i class="fas fa-pencil prefix grey-text"></i>
+            <textarea type="text" id="form8" class="md-textarea form-control m-0" rows="4"></textarea>
+            <label class="m-0" data-error="wrong" data-success="right" for="form8">Your message</label>
+          </div>
+  
+          <div class="md-form">
+            <p>
+              <b>Disclaimer:</b> When you submit this form your
+              Folding@home user name, team, all or portions of the log
+              files produced by the Folding@home software and all the
+              information you provide in this form will be stored
+              indefinitely on servers at Folding@home. Your IP
+              address will be logged but not made public. <b>Do not
+                include passwords, copyrighted material or any other
+                information which you do not want to be made public.
+              </b>
+            </p>
+            <p>
+              By submitting this form you acknowledge that you are
+              making said information publicly available on the Internet
+              and agree to let Folding@home.org, it's partners and members of
+              foldingforum.org use said information for the purpose of
+              improving the Folding@home software. The collected
+              information will not be used for advertising or tracking
+              your activity. If you do not agree with these terms
+              please do not submit this forum and instead press the
+              Cancel button now.
+            </p>
+            <p>To see a list of bug reports submitted from this IP address click
+              <a href="https://apps.foldingathome.org/bugreport.php">here</a>.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div style="display:none">
 
     <div id="bug-submission-dialog" title="Submitting Bug Report. Please wait. . .">
       <img src="images/report-bug.png" width="113" height="108" />
       <iframe id="bug-iframe" name="bug-iframe"></iframe>
-    </div>
-
-    <div id="bug-dialog" title="Submit a Bug Report">
-      <center><img src="images/report-bug.png" width="113" height="108" /></center>
-      <form method="post" target="bug-iframe" action="https://apps.foldingathome.org/bugreport.php">
-        <table>
-          <tr>
-            <th>Name:</th>
-            <td class="user"></td>
-            <input name="user" hidden="true" />
-          </tr>
-          <tr>
-            <th>Team:</th>
-            <td class="team"></td>
-            <input name="team" hidden="true" />
-          </tr>
-          <tr>
-            <th>Category:</th>
-            <td>
-              <select name="category">
-                <option value="choose" selected>-- Please choose --</option>
-                <option value="web_control">Advanced Control defect</option>
-                <option value="cosmetic">Cosmetic defect</option>
-                <option value="cpu">CPU folding problem</option>
-                <option value="conectivity">Connectivity issue</option>
-                <option value="documentation">Documentation</option>
-                <option value="enhancement">Enhancement request</option>
-                <option value="gpu">GPU folding problem</option>
-                <option value="install">Install problem</option>
-                <option value="overuse">Resources overutilized</option>
-                <option value="underuse">Resources underutilized</option>
-                <option value="uninstall">Uninstall problem</option>
-                <option value="web_control">Web Control defect</option>
-              </select>
-            </td>
-          </tr>
-          <tr class="description">
-            <td colspan="2"><b>Please provide a brief description:</b>
-              <textarea name="description" rows="4" maxlength="1024"></textarea>
-            </td>
-          </tr>
-        </table>
-        <input name="ts" type="hidden" />
-        <input name="log" type="hidden" />
-      </form>
-      <div id="bug-disclaimer">
-        <p>
-          <b>Disclaimer:</b> When you submit this form your
-          Folding@home user name, team, all or portions of the log
-          files produced by the Folding@home software and all the
-          information you provide in this form will be stored
-          indefinitely on servers at Folding@home. Your IP
-          address will be logged but not made public. <b>Do not
-            include passwords, copyrighted material or any other
-            information which you do not want to be made public.
-          </b>
-        </p>
-        <p>
-          By submitting this form you acknowledge that you are
-          making said information publicly available on the Internet
-          and agree to let Folding@home.org, it's partners and members of
-          foldingforum.org use said information for the purpose of
-          improving the Folding@home software. The collected
-          information will not be used for advertising or tracking
-          your activity. If you do not agree with these terms
-          please do not submit this forum and instead press the
-          Cancel button now.
-        </p>
-      </div>
-      <p>To see a list of bug reports submitted from this IP address click
-        <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
     </div>
 
     <div id="project-description" class="popup"></div>
