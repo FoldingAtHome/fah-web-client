@@ -10,7 +10,7 @@
   <!-- Fav Icon-->
   <link rel="icon" href="favicon.ico">
 
-<!--
+  <!--
   <link rel="stylesheet" href="./css/jquery-ui-1.12.1.min.css">
   <link rel="stylesheet" href="./css/jquery-ui-1.12.1.structure.min.css">
   <link rel="stylesheet" href="./css/jquery-ui-1.12.1.theme.min.css">
@@ -29,7 +29,7 @@
   <!--MDB CSS-->
   <link rel="stylesheet" href="./css/mdb.min.css">
 
-  
+
   <link rel="stylesheet" href="./css/style.css">
 
   <!-- Main JS-->
@@ -87,18 +87,13 @@
               </div>
             </div>
             <div class="col">
-              <div class="row m-0">
-                <!-- have to attach to modal-->
-                <button type="button" class="btn bg-white">Learn</button>
-                <button type="button" class="btn bg-white"
-                  onclick="location.href='https:\/\/foldingathome.org/news/'">News</button>
-                <!-- have to attach to modal-->
-                <button type="button" class="btn bg-white">Help
-                </button>
+              <div class="row m-0 justify-content-end">
+                <button type="button" class="btn bg-white" data-toggle="modal" data-target="#help_modal">Help</button>
+                <button type="button" class="btn bg-white" data-toggle="modal" data-target="#learn_modal">Learn</button>
+                <button type="button" class="btn bg-white" onclick="location.href='https:\/\/foldingathome.org/news/'">News</button>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       <div clas="p-2"></div>
@@ -148,371 +143,400 @@
     </section>
     </div>
   </main>
-      <div class="row panel-pu" id="slots">
-        <ul class="box-pu"></ul>
-      </div>
+  <div class="row panel-pu" id="slots">
+    <ul class="box-pu"></ul>
+  </div>
 
-      <div class="row">
-        <div class="one-half column">
-          <div class="col-left col-left-pu">
+  <div class="row">
+    <div class="one-half column">
+      <div class="col-left col-left-pu">
 
-            <div id="box-status" class="clearfix">
-              <div id="box-status-msg">Loading...</div>
-              <div id="box-status-points">
-                <span class="hlarge">-</span> Points per day
-              </div>
-            </div>
-            <p>My computer has <span id="box-status-time unknown">unknown time</span> to
-              complete this work unit.</p>
+        <div id="box-status" class="clearfix">
+          <div id="box-status-msg">Loading...</div>
+          <div id="box-status-points">
+            <span class="hlarge">-</span> Points per day
+          </div>
+        </div>
+        <p>My computer has <span id="box-status-time unknown">unknown time</span> to
+          complete this work unit.</p>
 
-            <div id="box-all-slots">
-              <div id="box-power">
-                <div class="row">
-                  <div class="one-half column">
-                    <div id="box-power-slider">
-                      <span>Power</span>
-                      <div id="slider"></div>
-                      <ul id="labels" class="row clearfix">
-                        <li class="label-1 one-third column">Light</li>
-                        <li class="label-2 one-third column">Medium</li>
-                        <li class="label-3 one-third column">Full</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="one-half column">
-                    <div id="box-idle-selector">
-                      <span>When</span>
-                      <ul class="radio-selector">
-                        <li>
-                          <input id="not_idle" name="idle" type="radio" value="1" checked="checked">
-                          <label for="not_idle">
-                            <span class="marker"></span><span>While I'm working</span>
-                          </label>
-                        </li>
-                        <li>
-                          <input id="idle" name="idle" type="radio" value="2">
-                          <label for="idle">
-                            <span class="marker"></span><span>Only when idle</span>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+        <div id="box-all-slots">
+          <div id="box-power">
+            <div class="row">
+              <div class="one-half column">
+                <div id="box-power-slider">
+                  <span>Power</span>
+                  <div id="slider"></div>
+                  <ul id="labels" class="row clearfix">
+                    <li class="label-1 one-third column">Light</li>
+                    <li class="label-2 one-third column">Medium</li>
+                    <li class="label-3 one-third column">Full</li>
+                  </ul>
                 </div>
               </div>
+              <div class="one-half column">
+                <div id="box-idle-selector">
+                  <span>When</span>
+                  <ul class="radio-selector">
+                    <li>
+                      <input id="not_idle" name="idle" type="radio" value="1" checked="checked">
+                      <label for="not_idle">
+                        <span class="marker"></span><span>While I'm working</span>
+                      </label>
+                    </li>
+                    <li>
+                      <input id="idle" name="idle" type="radio" value="2">
+                      <label for="idle">
+                        <span class="marker"></span><span>Only when idle</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <a id="btn-stop" href="#" class="button">Stop Folding</a>
-              <a id="btn-run" href="#" class="button" style="display:none">Start
-                Folding</a>
-              <p id="note-background">Quitting the browser will not stop folding.
-                Folding happens in the background on your computer through the program FAHClient
-                even when Web Control is closed.
-              </p>
+          <a id="btn-stop" href="#" class="button">Stop Folding</a>
+          <a id="btn-run" href="#" class="button" style="display:none">Start
+            Folding</a>
+          <p id="note-background">Quitting the browser will not stop folding.
+            Folding happens in the background on your computer through the program FAHClient
+            even when Web Control is closed.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="one-half column">
+      <div id="box-stats-container">
+        <ul id="box-stats" class="row">
+          <li class="one-third column" id="box-stats-wu-col">
+            <div class="hlarge" id="box-stats-wu"></div>
+            <div>Work Unit (PRCG)</div>
+          </li>
+          <li class="one-third column" id="box-stats-days-col">
+            <div class="hlarge" id="box-stats-days"></div>
+            <div>Work Unit (ETA)</div>
+          </li>
+          <li class="one-third column" id="box-stats-points-col">
+            <div class="hlarge" id="box-stats-points"></div>
+            <div>Estimated Points</div>
+          </li>
+      </div>
+
+      <div id="box-project">Loading...</div>
+      </dl>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="footer">&nbsp;</div>
+
+
+  <!-- Modals -->
+  <!-- ideally we should be loading these remotely -->
+
+  <!-- Help Modal-->
+  <div class="modal fade" id="help_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Help</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Sorry you're having trouble. There are many online resources to help you.</p>
+          <div class="row">
+            <div class="col">
+              <h4>Quick Tip</h4>
+              <p>On rare occasions, and especially with older laptops, you may experience video lag, excessive heat, or
+                fan noise. Simply move the folding power slider down a notch or two.</p>
+            </div>
+            <div class="col">
+              <h4>Community Support</h4>
+              <p>The <a href="https://foldingforum.org/">Folding Forum</a> has a very active community of expert folders
+                who would be glad to help you with any problems you might have. It is also a great place to get more
+                involved. </p>
+            </div>
+            <div class="col">
+              <h4>Software Bugs</h4>
+              <p>Please <a class="report-bug" href="#">click here</a> to report bugs.</p>
+            </div>
+          </div>
+          <p class="text-center">For more about the science of protein folding and
+            the Folding@home project, <a href="https://foldingathome.org/science/">click here</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Learn Modal -->
+  <div class="modal fade" id="learn_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">Learn More &amp; Join the Community</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Scientists at universities around the world
+            utilize your donated computer time to better understand and develop cures
+            for some of humanity's worst diseases. Simply by running Folding@home
+            software you are aiding research for Alzheimer's, Huntington's, and many
+            cancers.</p>
+          <p>People like you, from all over the globe, currently
+            donate the unused power of over a quarter of a million processors, forming
+            one of the world's most powerful distributed super-computers.</p>
+          <div class="row">
+            <div class="col">
+              <h4>The Science</h4>
+              <p>Proteins help fight disease by first assembling themselves or
+                "folding". When proteins misfold, there can be serious health
+                consequences.</p>
+              <p>If we better understand protein misfolding we can design drugs and
+                therapies to combat these illnesses.</p>
+              <p>See our <a href="https://foldingathome.org/science/">Folding Science page</a> and the <a
+                  href="https://en.wikipedia.org/wiki/Protein_folding">Protein Folding Wikipedia page</a>.</p>
+            </div>
+            <div class="col">
+              <h4>The Software</h4>
+              <p>Folding@home software aids research by simulating protein folding.
+                The calculations are immense so we break them into small "work units"
+                and pass them to individual computers like yours to solve.</p>
+              <p>Folding@home computers assemble data from thousands of work units
+                into meaningful answers to important scientific questions.</p>
+              <p>See the <a href="https://en.wikipedia.org/wiki/Folding@home">Folding@home Wikipedia page</a>.</p>
+            </div>
+            <div class="col">
+              <h4>Get Involved</h4>
+              <p>One of the best ways to help Folding@home is by recruiting your
+                friends and family. Start by sharing our project with them.</p>
+              <p>Then <a href="https://stats.foldingathome.org/">join a team</a> or even <a
+                  href="https://apps.foldingathome.org/team/create">start your own team</a>. The more points you and
+                your
+                team earn, the
+                closer we come to finding cures.</p>
+              <p>Our non-profit organization also accepts <a href="https://foldingathome.org/donate/">donations</a>.</p>
             </div>
           </div>
         </div>
-        <div class="one-half column">
-          <div id="box-stats-container">
-            <ul id="box-stats" class="row">
-              <li class="one-third column" id="box-stats-wu-col">
-                <div class="hlarge" id="box-stats-wu"></div>
-                <div>Work Unit (PRCG)</div>
-              </li>
-              <li class="one-third column" id="box-stats-days-col">
-                <div class="hlarge" id="box-stats-days"></div>
-                <div>Work Unit (ETA)</div>
-              </li>
-              <li class="one-third column" id="box-stats-points-col">
-                <div class="hlarge" id="box-stats-points"></div>
-                <div>Estimated Points</div>
-              </li>
-          </div>
-
-          <div id="box-project">Loading...</div>
-          </dl>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
         </div>
       </div>
+    </div>
+  </div>
 
+
+  <div style="display:none">
+
+
+
+
+    <div id="stop-popup" class="popup">
+      <h2>Stop Folding</h2>
+      <p>Would you like to stop folding now or finish the
+        current work unit, get the points, then stop?</p>
+      <div>
+        <a href="#" class="button green cancel">Finish up, then stop</a>
+        <a href="#" class="button red stop">Stop now</a>
+      </div>
     </div>
 
-    <div class="footer">&nbsp;</div>
 
-    <div style="display:none">
-
-      <div id="help-popup" class="popup">
-        <h2>Help</h2>
-        <p class="abstract">Sorry you're having trouble. There are many online
-          resources to help you.</p>
-        <div class="row clearfix">
-          <div class="one-third column">
-            <h4>FAQ</h4>
-            <p>Start here to find answers to <a href="https://foldingathome.org/faq/">Frequently Asked Questions</a>.
-            </p>
-            <h4>Quick Tip</h4>
-            <p>On rare occasions, and especially with older laptops, you may
-              experience video lag, excessive heat, or fan noise. Simply move
-              the folding power slider down a notch or two.</p>
-          </div>
-          <div class="one-third column">
-            <h4>Community Support</h4>
-            <p>The <a href="https://foldingforum.org/">Folding Forum</a> has a very active community of expert folders
-              who
-              would be glad to help you with any problems you might have. It is also
-              a great place to get more involved.</p>
-          </div>
-          <div class="one-third column">
-            <h4>Software Bugs</h4>
-            <p>Please <a class="report-bug" href="#">click here</a> to report
-              bugs.</p>
-          </div>
+    <div id="setupid-popup" class="popup">
+      <h2>Change Identity</h2>
+      <div class="row clearfix">
+        <div class="one-third column">
+          <label>Name</label>
+          <input id="user" type="text" value="Anonymous" tabindex="1">
+          <p>If you choose a name, you can earn points for completing work units
+            (WU).</p>
+          <p class="info">Note: All fields are optional.</p>
         </div>
-        <p class="abstract center">For more about the science of protein folding and
-          the Folding@home project, <a href="https://foldingathome.org/science/">click here</a>.</p>
-        <div class="center"> <a href="#" class="button green done">Done</a> </div>
-      </div>
-
-
-      <div id="learn-popup" class="popup">
-        <h2>Learn More &amp; Join the Community</h2>
-        <p class="abstract">Scientists at universities around the world
-          utilize your donated computer time to better understand and develop cures
-          for some of humanity's worst diseases. Simply by running Folding@home
-          software you are aiding research for Alzheimer's, Huntington's, and many
-          cancers.</p>
-        <p class="abstract">People like you, from all over the globe, currently
-          donate the unused power of over a quarter of a million processors, forming
-          one of the world's most powerful distributed super-computers.</p>
-        <div class="row clearfix">
-          <div class="one-third column">
-            <h4>The Science</h4>
-            <p>Proteins help fight disease by first assembling themselves or
-              "folding". When proteins misfold, there can be serious health
-              consequences.</p>
-            <p>If we better understand protein misfolding we can design drugs and
-              therapies to combat these illnesses.</p>
-            <p>See our <a href="https://foldingathome.org/science/">Folding Science page</a> and the <a
-                href="https://en.wikipedia.org/wiki/Protein_folding">Protein Folding Wikipedia page</a>.</p>
-          </div>
-          <div class="one-third column">
-            <h4>The Software</h4>
-            <p>Folding@home software aids research by simulating protein folding.
-              The calculations are immense so we break them into small "work units"
-              and pass them to individual computers like yours to solve.</p>
-            <p>Folding@home computers assemble data from thousands of work units
-              into meaningful answers to important scientific questions.</p>
-            <p>See the <a href="https://en.wikipedia.org/wiki/Folding@home">Folding@home Wikipedia page</a>.</p>
-          </div>
-          <div class="one-third column">
-            <h4>Get Involved</h4>
-            <p>One of the best ways to help Folding@home is by recruiting your
-              friends and family. Start by sharing our project with them.</p>
-            <p>Then <a href="https://stats.foldingathome.org/">join a team</a> or even <a
-                href="https://apps.foldingathome.org/team/create">start your own team</a>. The more points you and your
-              team earn, the
-              closer we come to finding cures.</p>
-            <p>Our non-profit organization also accepts <a href="https://foldingathome.org/donate/">donations</a>.</p>
-          </div>
+        <div class="one-third column">
+          <label>Team Number</label>
+          <input id="team" type="text" value="" tabindex="2">
+          <p>If you have joined a team you should enter your team number above.
+            Then the points you earn to be added to your team's total.</p>
+          <p>For more information about teams and points see the
+            <a href="https://stats.foldingathome.org/">Stats Page</a>.</p>
         </div>
-        <div class="center"> <a href="#" class="button green done">Done</a> </div>
-      </div>
-
-
-      <div id="stop-popup" class="popup">
-        <h2>Stop Folding</h2>
-        <p>Would you like to stop folding now or finish the
-          current work unit, get the points, then stop?</p>
-        <div>
-          <a href="#" class="button green cancel">Finish up, then stop</a>
-          <a href="#" class="button red stop">Stop now</a>
+        <div class="one-third column">
+          <label>Passkey</label>
+          <input id="pass" type="password" value="" tabindex="3">
+          <p>Passkeys are used to add an extra level of security for those
+            competing for points. Getting a passkey will also allow you to earn
+            bonus points for completing work early. <a href="https://apps.foldingathome.org/paskey/create/">Get a
+              Passkey</a>.</p>
+          <p>For more information see <a href="https://foldingathome.org/passkey/">Passkey FAQ</a>.</p>
         </div>
       </div>
-
-
-      <div id="setupid-popup" class="popup">
-        <h2>Change Identity</h2>
-        <div class="row clearfix">
-          <div class="one-third column">
-            <label>Name</label>
-            <input id="user" type="text" value="Anonymous" tabindex="1">
-            <p>If you choose a name, you can earn points for completing work units
-              (WU).</p>
-            <p class="info">Note: All fields are optional.</p>
-          </div>
-          <div class="one-third column">
-            <label>Team Number</label>
-            <input id="team" type="text" value="" tabindex="2">
-            <p>If you have joined a team you should enter your team number above.
-              Then the points you earn to be added to your team's total.</p>
-            <p>For more information about teams and points see the
-              <a href="https://stats.foldingathome.org/">Stats Page</a>.</p>
-          </div>
-          <div class="one-third column">
-            <label>Passkey</label>
-            <input id="pass" type="password" value="" tabindex="3">
-            <p>Passkeys are used to add an extra level of security for those
-              competing for points. Getting a passkey will also allow you to earn
-              bonus points for completing work early. <a href="https://apps.foldingathome.org/paskey/create/">Get a
-                Passkey</a>.</p>
-            <p>For more information see <a href="https://foldingathome.org/passkey/">Passkey FAQ</a>.</p>
-          </div>
-        </div>
-        <div class="center">
-          <a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
-          <a href="#" class="button green" id="setupid-btn-save">Save</a>
-        </div>
+      <div class="center">
+        <a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
+        <a href="#" class="button green" id="setupid-btn-save">Save</a>
       </div>
+    </div>
 
-      <div id="disconnected" title="Folding@home Disconnected">
-        <p>The Folding@home software on your computer has most likely stopped.</p>
-        <p>Please first restart it, then reload this page.</p>
-      </div>
-
-
-      <div id="reopened" title="Web Control Halted">
-        <p>Folding@home Web Control was reopened in your browser in another
-          window or tab. This instance has been halted.</p>
-      </div>
+    <div id="disconnected" title="Folding@home Disconnected">
+      <p>The Folding@home software on your computer has most likely stopped.</p>
+      <p>Please first restart it, then reload this page.</p>
+    </div>
 
 
-      <div id="bug-submission-dialog" title="Submitting Bug Report. Please wait. . .">
-        <img src="images/report-bug.png" width="113" height="108" />
-        <iframe id="bug-iframe" name="bug-iframe"></iframe>
-      </div>
+    <div id="reopened" title="Web Control Halted">
+      <p>Folding@home Web Control was reopened in your browser in another
+        window or tab. This instance has been halted.</p>
+    </div>
 
-      <div id="bug-dialog" title="Submit a Bug Report">
-        <center><img src="images/report-bug.png" width="113" height="108" /></center>
-        <form method="post" target="bug-iframe" action="https://apps.foldingathome.org/bugreport.php">
-          <table>
-            <tr>
-              <th>Name:</th>
-              <td class="user"></td>
-              <input name="user" hidden="true" />
-            </tr>
-            <tr>
-              <th>Team:</th>
-              <td class="team"></td>
-              <input name="team" hidden="true" />
-            </tr>
-            <tr>
-              <th>Category:</th>
-              <td>
-                <select name="category">
-                  <option value="choose" selected>-- Please choose --</option>
-                  <option value="web_control">Advanced Control defect</option>
-                  <option value="cosmetic">Cosmetic defect</option>
-                  <option value="cpu">CPU folding problem</option>
-                  <option value="conectivity">Connectivity issue</option>
-                  <option value="documentation">Documentation</option>
-                  <option value="enhancement">Enhancement request</option>
-                  <option value="gpu">GPU folding problem</option>
-                  <option value="install">Install problem</option>
-                  <option value="overuse">Resources overutilized</option>
-                  <option value="underuse">Resources underutilized</option>
-                  <option value="uninstall">Uninstall problem</option>
-                  <option value="web_control">Web Control defect</option>
-                </select>
-              </td>
-            </tr>
-            <tr class="description">
-              <td colspan="2"><b>Please provide a brief description:</b>
-                <textarea name="description" rows="4" maxlength="1024"></textarea>
-              </td>
-            </tr>
-          </table>
-          <input name="ts" type="hidden" />
-          <input name="log" type="hidden" />
-        </form>
-        <div id="bug-disclaimer">
-          <p>
-            <b>Disclaimer:</b> When you submit this form your
-            Folding@home user name, team, all or portions of the log
-            files produced by the Folding@home software and all the
-            information you provide in this form will be stored
-            indefinitely on servers at Folding@home. Your IP
-            address will be logged but not made public. <b>Do not
-              include passwords, copyrighted material or any other
-              information which you do not want to be made public.
-            </b>
-          </p>
-          <p>
-            By submitting this form you acknowledge that you are
-            making said information publicly available on the Internet
-            and agree to let Folding@home.org, it's partners and members of
-            foldingforum.org use said information for the purpose of
-            improving the Folding@home software. The collected
-            information will not be used for advertising or tracking
-            your activity. If you do not agree with these terms
-            please do not submit this forum and instead press the
-            Cancel button now.
-          </p>
-        </div>
-        <p>To see a list of bug reports submitted from this IP address click
-          <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
-      </div>
 
-      <div id="unconfigured">
-        <h2>Welcome to Folding@home. Please read this.</h2>
-        <p style="text-align: left">The program "FAHClient" is actually idling
-          in the background on your computer right now. You can start folding as
-          "Anonymous" or set up an identity and earn points.</p>
-        <p style="text-align: left">When you quit this browser, FAHClient will
-          continue to run. For easy access in the future we recommend you
-          <u>bookmark this page</u> by pressing Ctrl-D now.</p>
-        <p style="text-align: left">The default settings assume you are using
-          a laptop and set the power usage to be lower than you might want for
-          other computers. You can always make adjustments.</p>
-        <br />
-        <div class="row clearfix">
-          <div class="one-half column">
-            <ul class="radio-selector">
-              <li>
-                <input id="account_type1" name="account_type" type="radio" value="1" checked="checked">
-                <label for="account_type1"><span></span>Fold as Anonymous</label>
-              </li>
-              <li>
-                <input id="account_type2" name="account_type" type="radio" value="2">
-                <label for="account_type2"><span></span>Set up an identity</label>
-              </li>
-            </ul>
-          </div>
-          <div class="one-half column">
-            <a href="#" class="button green large" id="btn-select-id">Start Folding</a>
-          </div>
-        </div>
-      </div>
+    <div id="bug-submission-dialog" title="Submitting Bug Report. Please wait. . .">
+      <img src="images/report-bug.png" width="113" height="108" />
+      <iframe id="bug-iframe" name="bug-iframe"></iframe>
+    </div>
 
-      <div id="browser-warn">
-        <p style="text-align: left">
-          This Web browser may not fully support all the features need by
-          Folding@home. If you experience problems please upgrade to the
-          listed version or newer of one of the following browsers:
+    <div id="bug-dialog" title="Submit a Bug Report">
+      <center><img src="images/report-bug.png" width="113" height="108" /></center>
+      <form method="post" target="bug-iframe" action="https://apps.foldingathome.org/bugreport.php">
+        <table>
+          <tr>
+            <th>Name:</th>
+            <td class="user"></td>
+            <input name="user" hidden="true" />
+          </tr>
+          <tr>
+            <th>Team:</th>
+            <td class="team"></td>
+            <input name="team" hidden="true" />
+          </tr>
+          <tr>
+            <th>Category:</th>
+            <td>
+              <select name="category">
+                <option value="choose" selected>-- Please choose --</option>
+                <option value="web_control">Advanced Control defect</option>
+                <option value="cosmetic">Cosmetic defect</option>
+                <option value="cpu">CPU folding problem</option>
+                <option value="conectivity">Connectivity issue</option>
+                <option value="documentation">Documentation</option>
+                <option value="enhancement">Enhancement request</option>
+                <option value="gpu">GPU folding problem</option>
+                <option value="install">Install problem</option>
+                <option value="overuse">Resources overutilized</option>
+                <option value="underuse">Resources underutilized</option>
+                <option value="uninstall">Uninstall problem</option>
+                <option value="web_control">Web Control defect</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="description">
+            <td colspan="2"><b>Please provide a brief description:</b>
+              <textarea name="description" rows="4" maxlength="1024"></textarea>
+            </td>
+          </tr>
+        </table>
+        <input name="ts" type="hidden" />
+        <input name="log" type="hidden" />
+      </form>
+      <div id="bug-disclaimer">
+        <p>
+          <b>Disclaimer:</b> When you submit this form your
+          Folding@home user name, team, all or portions of the log
+          files produced by the Folding@home software and all the
+          information you provide in this form will be stored
+          indefinitely on servers at Folding@home. Your IP
+          address will be logged but not made public. <b>Do not
+            include passwords, copyrighted material or any other
+            information which you do not want to be made public.
+          </b>
         </p>
-        <ul>
-          <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
-          <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
-          <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
-          <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
-        </ul>
+        <p>
+          By submitting this form you acknowledge that you are
+          making said information publicly available on the Internet
+          and agree to let Folding@home.org, it's partners and members of
+          foldingforum.org use said information for the purpose of
+          improving the Folding@home software. The collected
+          information will not be used for advertising or tracking
+          your activity. If you do not agree with these terms
+          please do not submit this forum and instead press the
+          Cancel button now.
+        </p>
       </div>
-
-      <div id="project-description" class="popup"></div>
+      <p>To see a list of bug reports submitted from this IP address click
+        <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
     </div>
-    <div id="overlay">Web Control sleeping. . .</div>
+
+    <div id="unconfigured">
+      <h2>Welcome to Folding@home. Please read this.</h2>
+      <p style="text-align: left">The program "FAHClient" is actually idling
+        in the background on your computer right now. You can start folding as
+        "Anonymous" or set up an identity and earn points.</p>
+      <p style="text-align: left">When you quit this browser, FAHClient will
+        continue to run. For easy access in the future we recommend you
+        <u>bookmark this page</u> by pressing Ctrl-D now.</p>
+      <p style="text-align: left">The default settings assume you are using
+        a laptop and set the power usage to be lower than you might want for
+        other computers. You can always make adjustments.</p>
+      <br />
+      <div class="row clearfix">
+        <div class="one-half column">
+          <ul class="radio-selector">
+            <li>
+              <input id="account_type1" name="account_type" type="radio" value="1" checked="checked">
+              <label for="account_type1"><span></span>Fold as Anonymous</label>
+            </li>
+            <li>
+              <input id="account_type2" name="account_type" type="radio" value="2">
+              <label for="account_type2"><span></span>Set up an identity</label>
+            </li>
+          </ul>
+        </div>
+        <div class="one-half column">
+          <a href="#" class="button green large" id="btn-select-id">Start Folding</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="browser-warn">
+      <p style="text-align: left">
+        This Web browser may not fully support all the features need by
+        Folding@home. If you experience problems please upgrade to the
+        listed version or newer of one of the following browsers:
+      </p>
+      <ul>
+        <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
+        <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
+        <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
+        <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
+      </ul>
+    </div>
+
+    <div id="project-description" class="popup"></div>
+  </div>
+  <div id="overlay">Web Control sleeping. . .</div>
   </main>
 
 
 
-    <!-- jQuery -->
-    <script src="./js/jquery-3.4.1.min.js"></script>
-    <script src="./js/jquery-ui-1.12.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script src="./js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script src="./js/mdb.min.js"></script>
-    <!-- Intercom -->
-    <script src="./js/intercom.min.js"></script>
+  <!-- jQuery -->
+  <script src="./js/jquery-3.4.1.min.js"></script>
+  <script src="./js/jquery-ui-1.12.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script src="./js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="./js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script src="./js/mdb.min.js"></script>
+  <!-- Intercom -->
+  <script src="./js/intercom.min.js"></script>
 
 </body>
 
