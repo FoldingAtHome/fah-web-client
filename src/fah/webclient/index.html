@@ -96,30 +96,30 @@
         </div>
       </section>
 
-      <!-- user, research and points -->
+      <!-- User, Research Selection, Points -->
       <section class="pt-2">
         <div class="card container">
           <div class="row m-0">
             <div class="col">
-              <div class="panel-top-heading">I'm folding as...</div>
-              <div id="user-username" class="hlarge">User</div>
-              <div id="user-team" class="hlarge">Team</div>
-              <!-- have to attach modal -->
-              <a href="#" id="btn-setupid">Change Identity</a>
+              <div class="ml-1">I'm folding as...</div>
+              <h3 id="user-username" class="ml-1">User</h3>
+              <h3 id="user-team" class="ml-1">Team</h3>
+              <button type="button" class="btn bg-white btn-sm" data-toggle="modal" data-target="#identity_modal">Change Identity</button>
             </div>
 
-            <div class="col">
-              <a class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
+            <div class="col justify-content-center">
+              <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">I support research fighting...</a>
 
               <div class="dropdown-menu">
-                <a class="dropdown-item" value="ANY">Any disease</a>
-                <a class="dropdown-item" value="ALZHEIMERS">Alzheimer's</a>
-                <a class="dropdown-item" value="CANCER">Cancer</a>
-                <a class="dropdown-item" value="HUNTINGTONS">Huntington's</a>
-                <a class="dropdown-item" value="PARKINSONS">Parkinson's</a>
+                <button class="dropdown-item" value="ANY">Any disease</button>
+                <button class="dropdown-item" value="ALZHEIMERS">Alzheimer's</button>
+                <button class="dropdown-item" value="CANCER">Cancer</button>
+                <button class="dropdown-item" value="HUNTINGTONS">Huntington's</button>
+                <button class="dropdown-item" value="PARKINSONS">Parkinson's</button>
               </div>
             </div>
+            <!-- need to test more-->
             <div class="col">
               <div id="box-points-loading">Loading...</div>
               <div id="box-points">
@@ -139,7 +139,6 @@
           </div>
         </div>
       </section>
-
       
       <!-- Loading Bar -->
       <section class="pt-2">
@@ -178,7 +177,7 @@
           </div>
         </div>
       </section>
-      
+
     </div>
   </main>
 
