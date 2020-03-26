@@ -104,13 +104,14 @@
               <div class="ml-1">I'm folding as...</div>
               <h3 id="user-username" class="ml-1">User</h3>
               <h3 id="user-team" class="ml-1">Team</h3>
-              <button type="button" class="btn bg-white btn-sm" data-toggle="modal" data-target="#identity_modal">Change Identity</button>
+              <button type="button" class="btn bg-white btn-sm" data-toggle="modal" data-target="#identity_modal">Change
+                Identity</button>
             </div>
-
+      
             <div class="col justify-content-center">
               <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">I support research fighting...</a>
-
+      
               <div class="dropdown-menu">
                 <button class="dropdown-item" value="ANY">Any disease</button>
                 <button class="dropdown-item" value="ALZHEIMERS">Alzheimer's</button>
@@ -119,21 +120,23 @@
                 <button class="dropdown-item" value="PARKINSONS">Parkinson's</button>
               </div>
             </div>
-            <!-- need to test more-->
             <div class="col">
-              <div id="box-points-loading">Loading...</div>
-              <div id="box-points">
-                <div class="panel-top-heading">Points earned</div>
-                <div>
-                  <span id="box-points-counter">Unknown</span>
-                  <a id="box-user-stats-link" href="#">(see stats)</a></span>
+              <span>Points earned: </span>
+              <h3 id="user_points">000,000,000,000</h3>
+              
+              <div id="team_stats">
+                <h3 id="team_nam">Team</h3> 
+                <span id="user_team_points">000,000,000</span>
+                <span>points contibuted out of </span>
+                <span id="team_points_total">128,823,071,760</span>
+              </div>
+              <div class="row pb-1">
+                <div class="col">
+                  <button type="button" class="btn btn-secondary btn-sm m-0">User Stats</button>
                 </div>
-                <div id="team-points">
-                  <span id="box-points-counter-contributed">Unknown</span>
-                  go to Team <span id="box-points-team">Unknown</span>'s total of
-                  <span id="box-points-counter-team">Unknown</span>.
+                <div class="col">
+                  <button type="button" class="btn btn-secondary btn-sm m-0">Team Stats</button>
                 </div>
-                <div id="no-team">Consider joining a team.</div>
               </div>
             </div>
           </div>
@@ -181,10 +184,6 @@
     </div>
   </main>
 
-  <div class="row panel-pu" id="slots">
-    <ul class="box-pu"></ul>
-  </div>
-  
   <div class="row">
     <div class="one-half column">
       <div class="col-left col-left-pu">
@@ -243,26 +242,6 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="one-half column">
-      <div id="box-stats-container">
-        <ul id="box-stats" class="row">
-          <li class="one-third column" id="box-stats-wu-col">
-            <div class="hlarge" id="box-stats-wu"></div>
-            <div>Work Unit (PRCG)</div>
-          </li>
-          <li class="one-third column" id="box-stats-days-col">
-            <div class="hlarge" id="box-stats-days"></div>
-            <div>Work Unit (ETA)</div>
-          </li>
-          <li class="one-third column" id="box-stats-points-col">
-            <div class="hlarge" id="box-stats-points"></div>
-            <div>Estimated Points</div>
-          </li>
-      </div>
-  
-      <div id="box-project">Loading...</div>
-      </dl>
     </div>
   </div>
   
