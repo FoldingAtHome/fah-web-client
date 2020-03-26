@@ -477,6 +477,46 @@
     </div>
   </div>
 
+  <!-- Unconfigured Modal -->
+  <div class="modal fade" id="unconfigured_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="myModalLabel">Welcome</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <h2>Welcome to Folding@home. Please read this.</h2>
+              <p>The program "FAHClient" is actually idling
+                in the background on your computer right now. You can start folding as
+                "Anonymous" or set up an identity and earn points.</p>
+              <p>When you quit this browser, FAHClient will
+                continue to run. For easy access in the future we recommend you
+                <u>bookmark this page</u> by pressing Ctrl-D now.</p>
+              <p>The default settings assume you are using
+                a laptop and set the power usage to be lower than you might want for
+                other computers. You can always make adjustments.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fold as Anonymous</button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary bg-white" data-toggle="modal" data-target="#identity_modal" data-dismiss="modal">Setup Identity</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div style="display:none">
 
@@ -555,38 +595,6 @@
       <p>To see a list of bug reports submitted from this IP address click
         <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
     </div>
-
-    <div id="unconfigured">
-      <h2>Welcome to Folding@home. Please read this.</h2>
-      <p style="text-align: left">The program "FAHClient" is actually idling
-        in the background on your computer right now. You can start folding as
-        "Anonymous" or set up an identity and earn points.</p>
-      <p style="text-align: left">When you quit this browser, FAHClient will
-        continue to run. For easy access in the future we recommend you
-        <u>bookmark this page</u> by pressing Ctrl-D now.</p>
-      <p style="text-align: left">The default settings assume you are using
-        a laptop and set the power usage to be lower than you might want for
-        other computers. You can always make adjustments.</p>
-      <br />
-      <div class="row clearfix">
-        <div class="one-half column">
-          <ul class="radio-selector">
-            <li>
-              <input id="account_type1" name="account_type" type="radio" value="1" checked="checked">
-              <label for="account_type1"><span></span>Fold as Anonymous</label>
-            </li>
-            <li>
-              <input id="account_type2" name="account_type" type="radio" value="2">
-              <label for="account_type2"><span></span>Set up an identity</label>
-            </li>
-          </ul>
-        </div>
-        <div class="one-half column">
-          <a href="#" class="button green large" id="btn-select-id">Start Folding</a>
-        </div>
-      </div>
-    </div>
-
 
     <div id="project-description" class="popup"></div>
   </div>
