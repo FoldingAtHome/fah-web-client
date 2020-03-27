@@ -1,0 +1,45 @@
+
+.white-icon{
+    color:white;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.brand-grey-bg{
+    background-color: #383838;
+}
+
+.brand-light-grey-bg{
+    background-color: #e7e7e7;
+}
+
+.brand-orange{
+    color: #ff7668;
+}
+
+.btn-fb{
+    background-color: #3b5998;
+}
+
+.btn-tw{
+    background-color: #00acee;
+}
+
+.btn-email{
+    background-color: darkslategrey;
+}
+
+#webControlHeader{
+    display: flex;
+    align-items: center;
+    font-size: 2.3rem;
+}
+
+.offsetCard{
+    margin-top: -1.5rem;
+    margin-right: 4%;
+    margin-left: 4%;
+    margin-bottom: 1rem;
+}
