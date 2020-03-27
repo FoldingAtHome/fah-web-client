@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Folding@home Web Control</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
@@ -42,14 +41,14 @@
   <header>
     <!--Navbar -->
     <nav class="mb-1 navbar navbar-expand-lg brand-grey-bg">
-      <span class="navbar-brand m-0 font-weight-bold white-icon" href="#">Folding</span>
-      <span class="navbar-brand m-0 font-weight-bold brand-orange" href="#">@</span>
-      <span class="navbar-brand m-0 font-weight-bold white-icon" href="#">Home</span>
+      <span class="navbar-brand m-0 font-weight-bold white-icon">Folding</span>
+      <span class="navbar-brand m-0 font-weight-bold brand-orange">@</span>
+      <span class="navbar-brand m-0 font-weight-bold white-icon">Home</span>
     </nav>
     <!--/.Navbar -->
   </header>
   <main>
-    <div clas="100hv">
+    <div class="100hv">
 
       <!-- social and info section -->
       <section class="pt-5">
@@ -111,8 +110,8 @@
             </div>
 
             <div class="col justify-content-center">
-              <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">I support research fighting...</a>
+              <div class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">I support research fighting...</div>
 
               <div class="dropdown-menu">
                 <button class="dropdown-item" value="ANY">Any disease</button>
@@ -148,15 +147,17 @@
       <!-- Loading Bar -->
       <section class="pt-2">
         <div class="card container">
-          <div clas="col-6">
+          <div class="col">
             <h3>CPU/GPU</h3>
             <h3>Status</h3>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100"></div>
+                aria-valuemax="100">
+              </div>
             </div>
             <h3 class="text-center">25%</h3>
           </div>
+        </div>
       </section>
 
       <!-- Stats -->
@@ -170,7 +171,7 @@
               <span>Work Unit (ETA):</span><span id="eta"></span>
             </div>
             <div class="card col p-2 m-1">
-              <span>Days To Complete:</span><span id="est_points"></span>
+              <span>Days To Complete:</span><span id="days_to_complete"></span>
             </div>
           </div>
           <div class="row">
@@ -241,18 +242,19 @@
   </main>
 
   <footer class="page-footer font-small grey fixed-bottom">
-    <div class="text-center py-3">Bootstrapped with ❤️ by an LTT Viewer</div>
+    <div class="text-center py-3">Bootstrapped with ❤️ by a LTT Viewer</div>
   </footer>
 
   <!-- Modals -->
   <!-- ideally we should be loading these remotely -->
 
   <!-- Help Modal-->
-  <div class="modal fade" id="help_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="help_modal" tabindex="-1" role="dialog" aria-labelledby="help_modal_label"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Help</h4>
+          <h4 class="modal-title w-100" id="help_modal_label">Help</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -294,12 +296,12 @@
   </div>
 
   <!-- Learn Modal -->
-  <div class="modal fade" id="learn_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade" id="learn_modal" tabindex="-1" role="dialog" aria-labelledby="learn_modal_label"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Learn More &amp; Join the Community</h4>
+          <h4 class="modal-title w-100" id="learn_modal_label">Learn More &amp; Join the Community</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -353,106 +355,13 @@
     </div>
   </div>
 
-  <!-- Stop Modal -->
-  <div class="modal fade" id="stop_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Stop Folding</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Would you like to stop folding now or finish the
-            current work unit, get the points, then stop?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Stop now</button>
-          <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Finish up, then stop</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Disconnected Modal -->
-  <div class="modal fade" id="disconnected_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Disconnected</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>The Folding@home software on your computer has most likely stopped.</p>
-          <p>Please first restart it, then reload this page.</p>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Halt Modal -->
-  <div class="modal fade" id="halt_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Halt</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Folding@home Web Control was reopened in your browser in another
-            window or tab. This instance has been halted.</p>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Browser Warning Modal -->
-  <div class="modal fade" id="browser_warning_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Browser Incompatibility</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>
-            This Web browser may not fully support all the features need by
-            Folding@home. If you experience problems please upgrade to the
-            listed version or newer of one of the following browsers:
-          </p>
-          <ul>
-            <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
-            <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
-            <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
-            <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Identity Modal -->
-  <div class="modal fade" id="identity_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade" id="identity_modal" tabindex="-1" role="dialog" aria-labelledby="identity_modal_label"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">User Identity</h4>
+          <h4 class="modal-title w-100" id="identity_modal_label">User Identity</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -494,13 +403,108 @@
     </div>
   </div>
 
-  <!-- Unconfigured Modal -->
-  <div class="modal fade" id="unconfigured_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <!-- Stop Modal -->
+  <div class="modal fade" id="stop_modal" tabindex="-1" role="dialog" aria-labelledby="stop_modal_label"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Welcome</h4>
+          <h4 class="modal-title w-100" id="stop_modal_label">Stop Folding</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to stop folding now or finish the
+            current work unit, get the points, then stop?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Stop now</button>
+          <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Finish up, then stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disconnected Modal -->
+  <div class="modal fade" id="disconnected_modal" tabindex="-1" role="dialog" aria-labelledby="disconnected_modal_label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="disconnected_modal_label">Disconnected</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>The Folding@home software on your computer has most likely stopped.</p>
+          <p>Please first restart it, then reload this page.</p>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Halt Modal -->
+  <div class="modal fade" id="halt_modal" tabindex="-1" role="dialog" aria-labelledby="halt_modal_label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="halt_modal_label">Halt</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Folding@home Web Control was reopened in your browser in another
+            window or tab. This instance has been halted.</p>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browser Warning Modal -->
+  <div class="modal fade" id="browser_warning_modal" tabindex="-1" role="dialog"
+    aria-labelledby="browser_warning_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="browser_warning_modal_label">Browser Incompatibility</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            This Web browser may not fully support all the features need by
+            Folding@home. If you experience problems please upgrade to the
+            listed version or newer of one of the following browsers:
+          </p>
+          <ul>
+            <li><a href="https://google.com/chrome/">Chrome</a> 23+</li>
+            <li><a href="https://mozilla.org/">Firefox</a> 16+</li>
+            <li><a href="https://apple.com/safari/">Safari</a> 5.1+</li>
+            <li><a href="https://microsoft.com/ie/">Internet Explorer</a> 9+</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unconfigured Modal -->
+  <div class="modal fade" id="unconfigured_modal" tabindex="-1" role="dialog" aria-labelledby="unconfigured_modal_label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header brand-light-grey-bg">
+          <h4 class="modal-title w-100" id="unconfigured_modal_label">Welcome</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -537,12 +541,12 @@
   </div>
 
   <!-- Bug Submission Modal -->
-  <div class="modal fade" id="bug_submission_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="bug_submission_modal" tabindex="-1" role="dialog"
+    aria-labelledby="bug_submission_modal_label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
-          <h4 class="modal-title w-100" id="myModalLabel">Submit a Bug Report</h4>
+          <h4 class="modal-title w-100" id="bug_submission_modal_label">Submit a Bug Report</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -560,10 +564,9 @@
           </div>
 
           <div class="md-form mb-5">
-            <a class="btn btn-primary dropdown-toggle m-0" type="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Category</a>
+            <div class="btn btn-primary dropdown-toggle m-0" type="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Category</div>
             <div class="dropdown-menu">
-              <button class="dropdown-item" value="choose" selected>-- Please choose --</button>
               <button class="dropdown-item" value="web_control">Advanced Control defect</button>
               <button class="dropdown-item" value="cosmetic">Cosmetic defect</button>
               <button class="dropdown-item" value="cpu">CPU folding problem</button>
@@ -581,7 +584,7 @@
 
           <div class="md-form mb-5">
             <i class="fas fa-pencil prefix grey-text"></i>
-            <textarea type="text" id="form8" class="md-textarea form-control m-0" rows="4"></textarea>
+            <textarea id="form8" class="md-textarea form-control m-0" rows="4"></textarea>
             <label class="m-0" data-error="wrong" data-success="right" for="form8">Your message</label>
           </div>
 
@@ -620,8 +623,6 @@
       </div>
     </div>
   </div>
-
-  <div id="overlay">Web Control sleeping. . .</div>
 
   <!-- jQuery -->
   <script src="./js/jquery-3.4.1.min.js"></script>
