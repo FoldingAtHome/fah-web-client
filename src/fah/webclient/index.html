@@ -38,7 +38,7 @@
 </head>
 
 <body class="brand-light-grey-bg">
-  <!-- Start your project here-->
+
   <header>
     <!--Navbar -->
     <nav class="mb-1 navbar navbar-expand-lg brand-grey-bg">
@@ -87,9 +87,11 @@
             </div>
             <div class="col">
               <div class="row m-0 justify-content-end">
-                <button type="button" class="btn bg-white" data-toggle="modal" data-target="#help_modal">Help</button>
-                <button type="button" class="btn bg-white" data-toggle="modal" data-target="#learn_modal">Learn</button>
-                <button type="button" class="btn bg-white" onclick="window.open('https:\/\/foldingathome.org/news/', '_blank')">News</button>
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#help_modal">Help</button>
+                <button type="button" class="btn btn-light" data-toggle="modal"
+                  data-target="#learn_modal">Learn</button>
+                <button type="button" class="btn btn-light"
+                  onclick="window.open('https:\/\/foldingathome.org/news/', '_blank')">News</button>
               </div>
             </div>
           </div>
@@ -107,11 +109,11 @@
               <button type="button" class="btn bg-white btn-sm" data-toggle="modal" data-target="#identity_modal">Change
                 Identity</button>
             </div>
-      
+
             <div class="col justify-content-center">
               <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">I support research fighting...</a>
-      
+
               <div class="dropdown-menu">
                 <button class="dropdown-item" value="ANY">Any disease</button>
                 <button class="dropdown-item" value="ALZHEIMERS">Alzheimer's</button>
@@ -123,9 +125,9 @@
             <div class="col">
               <span>Points earned: </span>
               <h3 id="user_points">000,000,000,000</h3>
-              
+
               <div id="team_stats">
-                <h3 id="team_nam">Team</h3> 
+                <h3 id="team_nam">Team</h3>
                 <span id="user_team_points">000,000,000</span>
                 <span>points contibuted out of </span>
                 <span id="team_points_total">128,823,071,760</span>
@@ -142,7 +144,7 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Loading Bar -->
       <section class="pt-2">
         <div class="card container">
@@ -150,10 +152,11 @@
             <h3>CPU/GPU</h3>
             <h3>Status</h3>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100"></div>
             </div>
             <h3 class="text-center">25%</h3>
-        </div>
+          </div>
       </section>
 
       <!-- Stats -->
@@ -181,73 +184,64 @@
         </div>
       </section>
 
-    </div>
-  </main>
-
-  <div class="row">
-    <div class="one-half column">
-      <div class="col-left col-left-pu">
-  
-        <div id="box-status" class="clearfix">
-          <div id="box-status-msg">Loading...</div>
-          <div id="box-status-points">
-            <span class="hlarge">-</span> Points per day
-          </div>
-        </div>
-        <p>My computer has <span id="box-status-time unknown">unknown time</span> to
-          complete this work unit.</p>
-  
-        <div id="box-all-slots">
-          <div id="box-power">
-            <div class="row">
-              <div class="one-half column">
-                <div id="box-power-slider">
-                  <span>Power</span>
-                  <div id="slider"></div>
-                  <ul id="labels" class="row clearfix">
-                    <li class="label-1 one-third column">Light</li>
-                    <li class="label-2 one-third column">Medium</li>
-                    <li class="label-3 one-third column">Full</li>
-                  </ul>
+      <!-- Power Button & Project Info -->
+      <section class="pt-2">
+        <div class="container">
+          <div class="row">
+            <div class="card col mr-1">
+              <div class="row m-1">
+                <h3>Power</h3>
+              </div>
+              <div class="row m-1">
+                <input type="range" class="custom-range" min="1" max="3" step="1" id="power_slider">
+              </div>
+              <div class="d-flex justify-content-between bd-highlight">
+                <div class="p-2 bd-highlight">Light</div>
+                <div class="p-2 bd-highlight">Medium</div>
+                <div class="p-2 bd-highlight">Full</div>
+              </div>
+              <div class="row m-1">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline1" name="powerLevel" checked>
+                  <label class="custom-control-label" for="defaultInline1">While I'm Working</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline2" name="powerLevel">
+                  <label class="custom-control-label" for="defaultInline2">Only When Idle</label>
                 </div>
               </div>
-              <div class="one-half column">
-                <div id="box-idle-selector">
-                  <span>When</span>
-                  <ul class="radio-selector">
-                    <li>
-                      <input id="not_idle" name="idle" type="radio" value="1" checked="checked">
-                      <label for="not_idle">
-                        <span class="marker"></span><span>While I'm working</span>
-                      </label>
-                    </li>
-                    <li>
-                      <input id="idle" name="idle" type="radio" value="2">
-                      <label for="idle">
-                        <span class="marker"></span><span>Only when idle</span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
+              <div class="row m-1 justify-content-center">
+                <!--switch to btn-danger for when we start folding and toggle data-toggle -->
+                <button id="start_btn" type="button" class="btn btn-lg btn-success" data-toggle="modal"
+                  data-target="#stop_modal">
+                  Start Folding
+                </button>
+              </div>
+              <div class="row m-1">
+                <p>Quitting the browser will not stop folding.
+                  Folding happens in the background on your computer through the program FAHClient
+                  even when Web Control is closed.
+                </p>
+              </div>
+            </div>
+            <div class="card col ml-1">
+              <div id="project_info_root">
+                <p>I'm contributing to</p>
+                <h3 id="project_number">Number</h3>
+                <h4 id="project_title">Title</h4>
+                <p id="project_short_description">Description</p>
+                <button id="learn_more_btn" type="button" class="btn btn-sm btn-info">Learn More</button>
               </div>
             </div>
           </div>
-  
-          <a id="btn-stop" href="#" class="button">Stop Folding</a>
-          <a id="btn-run" href="#" class="button" style="display:none">Start
-            Folding</a>
-          <p id="note-background">Quitting the browser will not stop folding.
-            Folding happens in the background on your computer through the program FAHClient
-            even when Web Control is closed.
-          </p>
         </div>
-      </div>
+      </section>
+
     </div>
-  </div>
-  
+  </main>
+
   <footer class="page-footer font-small grey fixed-bottom">
-    <div class="text-center py-3">Made with ❤️
-    </div>
+    <div class="text-center py-3">Bootstrapped with ❤️ by an LTT Viewer</div>
   </footer>
 
   <!-- Modals -->
@@ -268,7 +262,8 @@
           <div class="row">
             <div class="col">
               <h4>FAQ</h4>
-              <p>Start here to find answers to <a href="https://foldingathome.org/support/faq/">Frequently Asked Questions.</a></p>
+              <p>Start here to find answers to <a href="https://foldingathome.org/support/faq/">Frequently Asked
+                  Questions.</a></p>
             </div>
             <div class="col">
               <h4>Quick Tip</h4>
@@ -284,7 +279,8 @@
             <div class="col">
               <h4>Software Bugs</h4>
               <p>Please click below to report bugs.</p>
-              <button type="button" class="btn bg-white" data-toggle="modal" data-target="#bug_submission_modal" data-dismiss="modal">Submit Bug</button>
+              <button type="button" class="btn bg-white" data-toggle="modal" data-target="#bug_submission_modal"
+                data-dismiss="modal">Submit Bug</button>
             </div>
           </div>
           <p class="text-center">For more about the science of protein folding and
@@ -380,7 +376,8 @@
   </div>
 
   <!-- Disconnected Modal -->
-  <div class="modal fade" id="disconnected_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="disconnected_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
@@ -420,7 +417,8 @@
   </div>
 
   <!-- Browser Warning Modal -->
-  <div class="modal fade" id="browser_warning_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="browser_warning_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
@@ -497,7 +495,8 @@
   </div>
 
   <!-- Unconfigured Modal -->
-  <div class="modal fade" id="unconfigured_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="unconfigured_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header brand-light-grey-bg">
@@ -526,7 +525,8 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fold as Anonymous</button>
             </div>
             <div class="col">
-              <button type="button" class="btn btn-primary bg-white" data-toggle="modal" data-target="#identity_modal" data-dismiss="modal">Setup Identity</button>
+              <button type="button" class="btn btn-primary bg-white" data-toggle="modal" data-target="#identity_modal"
+                data-dismiss="modal">Setup Identity</button>
             </div>
           </div>
         </div>
@@ -535,7 +535,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Bug Submission Modal -->
   <div class="modal fade" id="bug_submission_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -548,17 +548,17 @@
           </button>
         </div>
         <div class="modal-body">
-  
+
           <div class="md-form mb-5">
             <input type="text" id="form34" class="form-control validate">
             <label data-error="wrong" data-success="right" for="form34">Your name</label>
           </div>
-  
+
           <div class="md-form mb-5">
             <input type="email" id="form29" class="form-control validate">
             <label data-error="wrong" data-success="right" for="form29">Your Team</label>
           </div>
-  
+
           <div class="md-form mb-5">
             <a class="btn btn-primary dropdown-toggle m-0" type="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">Category</a>
@@ -578,13 +578,13 @@
               <button class="dropdown-item" value="web_control">Web Control defect</button>
             </div>
           </div>
-  
+
           <div class="md-form mb-5">
             <i class="fas fa-pencil prefix grey-text"></i>
             <textarea type="text" id="form8" class="md-textarea form-control m-0" rows="4"></textarea>
             <label class="m-0" data-error="wrong" data-success="right" for="form8">Your message</label>
           </div>
-  
+
           <div class="md-form">
             <p>
               <b>Disclaimer:</b> When you submit this form your
