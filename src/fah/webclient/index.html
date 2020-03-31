@@ -436,7 +436,7 @@
 	  <div class="col-50">
 		<ul class="radio-selector">
 		  <li>
-		    <input id="account_type1" name="account_type" type="radio" 
+		    <input id="account_type1" name="account_type" type="radio"
 		           value="1" checked="checked">
 		    <label
 		       for="account_type1"><span></span>Fold as Anonymous</label>
@@ -474,10 +474,18 @@
 </div>
 <div id="overlay">Web Control sleeping. . .</div>
 
-<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/libs/jquery-1.10.2.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="js/libs/jquery.selectbox-0.2.js"></script>
-<script src="js/intercom.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/libs/intercom.min.js"></script>
+<script>
+  // requesting main.js with a version query param to avoid caching
+  window.onload = function() {
+    var s = document.createElement('script');
+    s.src = "js/main.js?ver=" + Date.now()
+
+    document.body.appendChild(s);
+  }
+</script>
 </body>
 </html>
