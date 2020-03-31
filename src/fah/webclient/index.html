@@ -11,9 +11,9 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Oswald:700,400"/>
+        href="https://fonts.googleapis.com/css?family=Oswald:700,400"/>
 <link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+        href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -74,10 +74,12 @@
                 <span>I support research fighting</span>
                 <select id="box-cause-id">
                   <option value="ANY">Any disease</option>
+                  <option value="COVID_19">COVID-19</option>
                   <option value="ALZHEIMERS">Alzheimer's</option>
                   <option value="CANCER">Cancer</option>
                   <option value="HUNTINGTONS">Huntington's</option>
                   <option value="PARKINSONS">Parkinson's</option>
+                  <option value="HIGH_PRIORITY">High Priority</option>
                 </select>
               </div>
 
@@ -144,7 +146,7 @@
                   <ul class="radio-selector">
                     <li>
                       <input id="not_idle" name="idle" type="radio" value="1"
-                    	     checked="checked">
+                             checked="checked">
                       <label for="not_idle">
                         <span></span>While I'm working
                       </label>
@@ -238,8 +240,8 @@
     <p class="abstract">Scientists at universities around the world
       utilize your donated computer time to better understand and develop cures
       for some of humanity's worst diseases. Simply by running Folding@home
-      software you are aiding research for Alzheimer's, Huntington's, and many
-      cancers.</p>
+      software you are aiding research for COVID-19, Alzheimer's, Huntington's,
+      and many cancers.</p>
     <p class="abstract">People like you, from all over the globe, currently
       donate the unused power of over a quarter of a million processors, forming
       one of the world's most powerful distributed super-computers.</p>
@@ -328,132 +330,132 @@
       </div>
     </div>
     <div class="center">
-    	<a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
-    	<a href="#" class="button green" id="setupid-btn-save">Save</a>
+        <a href="#" class="button grey" id="setupid-btn-cancel">Cancel</a>
+        <a href="#" class="button green" id="setupid-btn-save">Save</a>
     </div>
   </div>
 
   <div id="disconnected" title="Folding@home Disconnected">
-	<p>The Folding@home software on your computer has most likely stopped.</p>
-	<p>Please first restart it, then reload this page.</p>
+        <p>The Folding@home software on your computer has most likely stopped.</p>
+        <p>Please first restart it, then reload this page.</p>
   </div>
 
 
   <div id="reopened" title="Web Control Halted">
-	<p>Folding@home Web Control was reopened in your browser in another
-	  window or tab. This instance has been halted.</p>
+        <p>Folding@home Web Control was reopened in your browser in another
+          window or tab. This instance has been halted.</p>
   </div>
 
 
   <div id="bug-submission-dialog"
        title="Submitting Bug Report. Please wait. . .">
-	<img src="images/report-bug.png" width="113" height="108"/>
-	<iframe id="bug-iframe" name="bug-iframe"></iframe>
+        <img src="images/report-bug.png" width="113" height="108"/>
+        <iframe id="bug-iframe" name="bug-iframe"></iframe>
   </div>
 
   <div id="bug-dialog" title="Submit a Bug Report">
-	<center><img src="images/report-bug.png" width="113" height="108"/></center>
+        <center><img src="images/report-bug.png" width="113" height="108"/></center>
     <form method="post" target="bug-iframe"
           action="https://apps.foldingathome.org/bugreport.php">
-	  <table>
+          <table>
         <tr><th>Name:</th><td class="user"></td>
           <input name="user" hidden="true"/>
-		</tr>
-		<tr>
+                </tr>
+                <tr>
           <th>Team:</th> <td class="team"></td>
-		  <input name="team" hidden="true"/>
-		</tr>
-		<tr>
-		  <th>Category:</th>
-		  <td>
-			<select name="category">
-			  <option value="choose" selected>-- Please choose --</option>
-			  <option value="web_control">Advanced Control defect</option>
-			  <option value="cosmetic">Cosmetic defect</option>
-			  <option value="cpu">CPU folding problem</option>
-			  <option value="conectivity">Connectivity issue</option>
-			  <option value="documentation">Documentation</option>
-			  <option value="enhancement">Enhancement request</option>
-			  <option value="gpu">GPU folding problem</option>
-			  <option value="install">Install problem</option>
+                  <input name="team" hidden="true"/>
+                </tr>
+                <tr>
+                  <th>Category:</th>
+                  <td>
+                        <select name="category">
+                          <option value="choose" selected>-- Please choose --</option>
+                          <option value="web_control">Advanced Control defect</option>
+                          <option value="cosmetic">Cosmetic defect</option>
+                          <option value="cpu">CPU folding problem</option>
+                          <option value="conectivity">Connectivity issue</option>
+                          <option value="documentation">Documentation</option>
+                          <option value="enhancement">Enhancement request</option>
+                          <option value="gpu">GPU folding problem</option>
+                          <option value="install">Install problem</option>
               <option value="overuse">Resources overutilized</option>
               <option value="underuse">Resources underutilized</option>
-			  <option value="uninstall">Uninstall problem</option>
-			  <option value="web_control">Web Control defect</option>
-			</select>
-		</td></tr>
-		<tr class="description">
+                          <option value="uninstall">Uninstall problem</option>
+                          <option value="web_control">Web Control defect</option>
+                        </select>
+                </td></tr>
+                <tr class="description">
           <td colspan="2"><b>Please provide a brief description:</b>
             <textarea name="description" rows="4" maxlength="1024"
                       ></textarea>
           </td>
         </tr>
-	  </table>
-	  <input name="ts" type="hidden"/>
-	  <input name="log" type="hidden"/>
-	</form>
-	<div id="bug-disclaimer">
-	  <p>
-		<b>Disclaimer:</b> When you submit this form your
-		Folding@home user name, team, all or portions of the log
-		files produced by the Folding@home software and all the
-		information you provide in this form will be stored
+          </table>
+          <input name="ts" type="hidden"/>
+          <input name="log" type="hidden"/>
+        </form>
+        <div id="bug-disclaimer">
+          <p>
+                <b>Disclaimer:</b> When you submit this form your
+                Folding@home user name, team, all or portions of the log
+                files produced by the Folding@home software and all the
+                information you provide in this form will be stored
         indefinitely on servers at Folding@home.  Your IP
-		address will be logged but not made public.  <b>Do not
-		  include passwords, copyrighted material or any other
-		  information which you do not want to be made public.
-		</b>
-	  </p>
-	  <p>
-		By submitting this form you acknowledge that you are
-		making said information publicly available on the Internet
+                address will be logged but not made public.  <b>Do not
+                  include passwords, copyrighted material or any other
+                  information which you do not want to be made public.
+                </b>
+          </p>
+          <p>
+                By submitting this form you acknowledge that you are
+                making said information publicly available on the Internet
         and agree to let Folding@home.org, it's partners and members of
-		foldingforum.org use said information for the purpose of
-		improving the Folding@home software.  The collected
-		information will not be used for advertising or tracking
-		your activity.  If you do not agree with these terms
-		please do not submit this forum and instead press the
-		Cancel button now.
-	  </p>
-	</div>
+                foldingforum.org use said information for the purpose of
+                improving the Folding@home software.  The collected
+                information will not be used for advertising or tracking
+                your activity.  If you do not agree with these terms
+                please do not submit this forum and instead press the
+                Cancel button now.
+          </p>
+        </div>
     <p>To see a list of bug reports submitted from this IP address click
       <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
   </div>
 
   <div id="unconfigured">
-	<h2>Welcome to Folding@home. Please read this.</h2>
-	<p style="text-align: left">The program "FAHClient" is actually idling
-	  in the background on your computer right now. You can start folding as
-	  "Anonymous" or set up an identity and earn points.</p>
-	<p style="text-align: left">When you quit this browser, FAHClient will
-	  continue to run.  For easy access in the future we recommend you
-	  <u>bookmark this page</u> by pressing Ctrl-D now.</p>
-	<p style="text-align: left">The default settings assume you are using
+        <h2>Welcome to Folding@home. Please read this.</h2>
+        <p style="text-align: left">The program "FAHClient" is actually idling
+          in the background on your computer right now. You can start folding as
+          "Anonymous" or set up an identity and earn points.</p>
+        <p style="text-align: left">When you quit this browser, FAHClient will
+          continue to run.  For easy access in the future we recommend you
+          <u>bookmark this page</u> by pressing Ctrl-D now.</p>
+        <p style="text-align: left">The default settings assume you are using
       a laptop and set the power usage to be lower than you might want for
       other computers.  You can always make adjustments.</p>
-	<br/>
-	<div class="row clearfix">
-	  <div class="col-50">
-		<ul class="radio-selector">
-		  <li>
-		    <input id="account_type1" name="account_type" type="radio"
-		           value="1" checked="checked">
-		    <label
-		       for="account_type1"><span></span>Fold as Anonymous</label>
-		  </li>
-		  <li>
-		    <input id="account_type2" name="account_type" type="radio"
-		           value="2">
-		    <label
-		       for="account_type2"><span></span>Set up an identity</label>
-		  </li>
-		</ul>
-	  </div>
-	  <div class="col-50">
+        <br/>
+        <div class="row clearfix">
+          <div class="col-50">
+                <ul class="radio-selector">
+                  <li>
+                    <input id="account_type1" name="account_type" type="radio"
+                           value="1" checked="checked">
+                    <label
+                       for="account_type1"><span></span>Fold as Anonymous</label>
+                  </li>
+                  <li>
+                    <input id="account_type2" name="account_type" type="radio"
+                           value="2">
+                    <label
+                       for="account_type2"><span></span>Set up an identity</label>
+                  </li>
+                </ul>
+          </div>
+          <div class="col-50">
         <a href="#" class="button green large" id="btn-select-id"
            >Start Folding</a>
       </div>
-	</div>
+        </div>
   </div>
 
   <div id="browser-warn">
