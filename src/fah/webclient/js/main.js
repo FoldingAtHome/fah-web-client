@@ -1,5 +1,5 @@
 /************************************ Globals *********************************/
-fah = {
+var fah = {
     stats_url: 'https://apps.foldingathome.org/stats.py',
     project_url: 'https://apps.foldingathome.org/project-jsonp.py',
 
@@ -280,7 +280,7 @@ function bug_submit() {
         url: 'log.txt.bz2.b64',
         data: {
             max: 4 * 1024 * 1024,
-            sid: sid
+            sid: fah.sid
         },
         cache: false,
         dataType: 'text',
@@ -755,7 +755,7 @@ function add_project(id) {
 /****************************** Network functions *****************************/
 function send_command(args) {
     args.data = get_arg(args.data, {});
-    args.data.sid = sid;
+    args.data.sid = fah.sid;
     args.dataType = get_arg(args.dataType, 'json');
     args.cache = get_arg(args.cache, false);
     $.ajax(args);
@@ -764,7 +764,7 @@ function send_command(args) {
 
 function set_update(id, rate, path, vars) {
     vars = typeof vars !== 'undefined' ? vars : {};
-    vars.sid = sid;
+    vars.sid = fah.sid;
     vars.update_id = id;
     vars.update_rate = rate;
     vars.update_path = path;
@@ -831,7 +831,7 @@ function updates(now) {
     $.ajax({
         url: 'api/updates',
         dataType: 'json',
-        data: {sid: sid},
+        data: {sid: fah.sid},
         cache: false,
         error: update_failed,
         success: update_succeeded
@@ -845,7 +845,7 @@ function disconnect(message, reload) {
     if (fah.disconnected) return;
     fah.disconnected = true;
 
-    sid = ''; // Reset SID
+    fah.sid = ''; // Reset SID
 
     // Abort any outstanding requests
     if (typeof $.xhrPool != 'undefined') $.xhrPool.abortAll();
@@ -934,7 +934,7 @@ var fah_create_client = (function() {
         } catch (e) {debug(e.message);}
 
         // Check session ID
-        if (typeof sid == 'undefined' || sid == '') {
+        if (typeof fah.sid == 'undefined' || fah.sid == '') {
             location.reload(true);
             return;
         }
@@ -1117,36 +1117,38 @@ function update_idle(idle) {
 
 
 function set_cause() {
-    client.set_cause($('#box-cause-id').val());
+    fah.client.set_cause($('#box-cause-id').val());
 }
 
 
 function set_power(power) {
     var v = {1: 'LIGHT', 2: 'MEDIUM', 3: 'FULL'};
-    client.set_power(v[power]);
+    fah.client.set_power(v[power]);
 }
 
 
 function set_pause(pause) {
-    client.set_pause(pause);
+    fah.client.set_pause(pause);
 }
 
 
 function set_idle(idle) {
-    client.set_idle(idle);
+    fah.client.set_idle(idle);
 }
 
 
 function set_identity() {
-    return client.set_identity($('#user').val().trim(),
+    return fah.client.set_identity($('#user').val().trim(),
                                $('#pass').val().trim(),
                                $('#team').val().trim());
 }
 
 
 /************************* Main Function **************************************/
-$(function() {
-    client = new fah_create_client({
+function main(sid) {
+    fah.sid = sid;
+
+    fah.client = new fah_create_client({
         user: update_user,
         passkey: update_passkey,
         team: update_team,
@@ -1320,4 +1322,9 @@ $(function() {
             width: 775
         });
     });
+}
+
+
+$(function () {
+  $.get('/api/session?_=' + Math.random()).done(main)
 });

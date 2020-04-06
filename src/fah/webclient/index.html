@@ -477,17 +477,9 @@
 <div id="overlay">Web Control sleeping. . .</div>
 
 <script src="js/libs/jquery-1.10.2.min.js"></script>
-<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/libs/jquery-ui.min.js"></script>
 <script src="js/libs/jquery.selectbox-0.2.js"></script>
 <script src="js/libs/intercom.min.js"></script>
-<script>
-  // requesting main.js with a version query param to avoid caching
-  window.onload = function() {
-    var s = document.createElement('script');
-    s.src = "js/main.js?ver=" + Date.now()
-
-    document.body.appendChild(s);
-  }
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
