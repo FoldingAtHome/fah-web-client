@@ -8,15 +8,14 @@ var fah = {
     max_project_brief: 600, // Maximum brief project description length
 
     disconnected: false,
-    faded: false,
     failed_updates: 0,
     active_updates: 0,
     connection_timeout: 7000, // ms
     last_update: 0,
     last_stats: 0,
     last_mouse: new Date().valueOf(),
-    mouse_inside_timeout: 10 * 60 * 1000,
-    mouse_outside_timeout: 2 * 60 * 1000,
+    mouse_inside_timeout: 30 * 60 * 1000,
+    mouse_outside_timeout: 10 * 60 * 1000,
 
     user: null,
     team: null,
@@ -215,16 +214,6 @@ function debug(msg) {
 
 function get_arg(arg, defaultValue) {
     return typeof arg == 'undefined' ? defaultValue : arg;
-}
-
-
-function fade_screen(fade) {
-    if (fade == fah.faded) return;
-
-    if (fade) $('#overlay').css({display: 'block'});
-    else $('#overlay').css({display: 'none'});
-
-    fah.faded = fade;
 }
 
 
@@ -747,7 +736,10 @@ function add_project(id) {
         data: {'id': id, 'version': fah.version},
         cache: true,
         dataType: 'jsonp',
-        success: dispatch
+        success: dispatch,
+        error: function () {
+          $('#box-project').html('No information.');
+        }
     });
 }
 
@@ -981,10 +973,8 @@ var fah_create_client = (function() {
                  fah.last_mouse + fah.mouse_inside_timeout < now) ||
                 (!fah.mouse_active &&
                  fah.last_mouse + fah.mouse_outside_timeout < now)) {
-                fade_screen(true);
                 return;
             }
-            fade_screen(false);
 
             check_stats(now);
             updates(now);

@@ -2,7 +2,7 @@ html, button, input, select, textarea {color: #222}
 body {
     font-size: 14px;
     line-height: 1.4;
-    background: url(../images/template/bg.jpg) #5875a0;
+    background: #5875a0;
     text-align: center;
 }
 ::-moz-selection {
@@ -790,21 +790,4 @@ a.btn:hover {background: #ddd;}
 #bug-iframe {
     width: 100%;
     height: 400px;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: black;
-    opacity: 0.9;
-    display: none;
-    z-index: 1000;
-    text-align: center;
-    padding: 10%;
-    font-size: 60px;
-    font-weight: bold;
-    color: #444;
 }
