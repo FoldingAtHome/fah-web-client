@@ -730,6 +730,12 @@ a.btn:hover {background: #ddd;}
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
     border-bottom-right-radius: 10px;
 }
+.ui-dialog {
+    z-index: 100;
+}
+.ui-dialog .ui-dialog-titlebar-close span {
+    margin: -9px;
+}
 #box-power-slider #labels {
     width: 204px;
     margin-top: 10px;

@@ -153,10 +153,14 @@
         var url = 'http://127.0.0.1:7396/';
         var minVer = [0]; // TODO
 
-        // Redirect Safari to http
-        var ua = navigator.userAgent.toLowerCase();
-        if (location.protocol == 'https:' && ua.indexOf('safari') != -1 &&
-            ua.indexOf('chrome') == -1) location.protocol = 'http';
+        // Redirect some browsers to http
+        if (location.protocol == 'https:') {
+          var ua = navigator.userAgent.toLowerCase();
+
+          // Redirect Edge & Safari
+          if (/edge/.test(ua) || (/safari/.test(ua) && !/chrome/.test(ua)))
+            location.protocol = 'http';
+        }
 
         // Javascript is running unhide dynamic content
         $('#loading').show();
