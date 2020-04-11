@@ -194,6 +194,7 @@
           $.ajax({
             url: url + 'ping',
             dataType: 'jsonp',
+            cache: false,
             timeout: 2000,
             error: connect,
             success: function (data) {
