@@ -1129,8 +1129,8 @@ function set_idle(idle) {
 
 function set_identity() {
     return fah.client.set_identity($('#user').val().trim(),
-                               $('#pass').val().trim(),
-                               $('#team').val().trim());
+                                   $('#pass').val().trim(),
+                                   $('#team').val().trim());
 }
 
 
@@ -1316,5 +1316,5 @@ function main(sid) {
 
 
 $(function () {
-  $.get('/api/session?_=' + Math.random()).done(main)
+  $.ajax({method: 'PUT', url: '/api/session?_=' + Math.random()}).done(main)
 });
