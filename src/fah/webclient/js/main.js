@@ -217,109 +217,6 @@ function get_arg(arg, defaultValue) {
 }
 
 
-/***************************** Bug Report functions ***************************/
-function bug_submit_ok() {
-    $('#bug-submission-dialog').dialog('destroy');
-}
-
-
-function bug_fail() {
-    var dialog = $('#bug-submission-dialog');
-
-    var h2 = dialog.find('h2');
-    h2.text('Bug report submission failed');
-    h2.css('color', 'red');
-
-    var iframe = $('#bug-iframe');
-    iframe.css('display', 'none');
-}
-
-
-function bug_upload(log) {
-    var form = $('#bug-dialog form');
-    form.find(':input[name=log]').val(log);
-    form.find(':input[name=ts]').val(new Date().toJSON());
-    form.submit();
-}
-
-
-function bug_submit() {
-    var fail = false;
-    var dialog = $('#bug-dialog');
-
-    // Category
-    var category = dialog.find('select[name=category]');
-    if (category.val() == 'choose') {
-        category.addClass('input-warn');
-        fail = true;
-
-    } else category.removeClass('input-warn');
-
-    // Description
-    var description = dialog.find('textarea');
-    if ($.trim(description.val()) == '') {
-        description.addClass('input-warn');
-        fail = true;
-
-    } else description.removeClass('input-warn');
-
-    if (fail) return false;
-
-    $.ajax({
-        url: 'log.txt.bz2.b64',
-        data: {
-            max: 4 * 1024 * 1024,
-            sid: fah.sid
-        },
-        cache: false,
-        dataType: 'text',
-        success: bug_upload,
-        error: bug_fail
-    });
-
-    dialog.dialog('destroy');
-
-    dialog = $('#bug-submission-dialog');
-
-    dialog.dialog({
-        modal: true,
-        resizable: false,
-        width: 600,
-        buttons: {'Ok': bug_submit_ok},
-        dialogClass: 'no-close',
-        closeOnEscape: false,
-        open: function(event, ui) {
-            $('.ui-dialog-titlebar-close', $(this).parent()).hide();
-        }
-    });
-}
-
-
-function bug_cancel() {
-    $('#bug-dialog').dialog('destroy');
-}
-
-
-function bug_report() {
-    var dialog = $('#bug-dialog');
-    dialog.find('input[name=user]').val(fah.user);
-    dialog.find('input[name=team]').val(fah.team);
-    dialog.find('.user').text(fah.user);
-    dialog.find('.team').text(fah.team);
-    dialog.find('textarea').val('');
-
-    dialog.dialog({
-        modal: true,
-        resizable: false,
-        width: 600,
-        buttons: {
-            'Cancel': bug_cancel,
-            'Submit': bug_submit
-        }
-    });
-}
-
-
 /******************************************************************************/
 function unconfigured() {
     $('#unconfigured').dialog({
@@ -1271,18 +1168,12 @@ function main(sid) {
     $('#idle').change(function (e) {set_idle($(this).is(':checked'));});
     $('#not_idle').change(function (e) {set_idle(!$(this).is(':checked'));});
 
-    // Enable Bug Reporting
-    $('.report-bug').on('click', function(e) {
-        e.preventDefault();
-        bug_report();
-    });
-
     // Email Link
     var subject = 'Our unused computer power can help find a cure.';
     var body = 'Here is a site where we can share our unused computer power ' +
         'to help disease researchers find cures for diseases like ' +
-        'Alzheimer\'s, Cancer, and Parkinson\'s. It only takes about 5 ' +
-        'minutes to join the cause.\n\n Find at more at ' +
+        'COVID-19, Alzheimer\'s, Cancer, and Parkinson\'s. It only takes ' +
+        'about 5 minutes to join the cause.\n\n Find at more at ' +
         'https://foldingathome.org/';
 
     $('a.email').attr({

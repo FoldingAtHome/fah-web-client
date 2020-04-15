@@ -218,8 +218,11 @@
       </div>
       <div class="col-33">
         <h4>Software Bugs</h4>
-        <p>Please <a class="report-bug" href="#">click here</a> to report
-          bugs.</p>
+        <p>
+          Please
+          <a href="https://github.com/FoldingAtHome/fah-issues/issues"
+             >report bugs on GitHub</a>.
+        </p>
       </div>
     </div>
     <p class="abstract center">For more about the science of protein folding and
@@ -341,81 +344,6 @@
           window or tab. This instance has been halted.</p>
   </div>
 
-
-  <div id="bug-submission-dialog"
-       title="Submitting Bug Report. Please wait. . .">
-        <img src="images/report-bug.png" width="113" height="108"/>
-        <iframe id="bug-iframe" name="bug-iframe"></iframe>
-  </div>
-
-  <div id="bug-dialog" title="Submit a Bug Report">
-        <center><img src="images/report-bug.png" width="113" height="108"/></center>
-    <form method="post" target="bug-iframe"
-          action="https://apps.foldingathome.org/bugreport.php">
-          <table>
-        <tr><th>Name:</th><td class="user"></td>
-          <input name="user" hidden="true"/>
-                </tr>
-                <tr>
-          <th>Team:</th> <td class="team"></td>
-                  <input name="team" hidden="true"/>
-                </tr>
-                <tr>
-                  <th>Category:</th>
-                  <td>
-                        <select name="category">
-                          <option value="choose" selected>-- Please choose --</option>
-                          <option value="web_control">Advanced Control defect</option>
-                          <option value="cosmetic">Cosmetic defect</option>
-                          <option value="cpu">CPU folding problem</option>
-                          <option value="conectivity">Connectivity issue</option>
-                          <option value="documentation">Documentation</option>
-                          <option value="enhancement">Enhancement request</option>
-                          <option value="gpu">GPU folding problem</option>
-                          <option value="install">Install problem</option>
-              <option value="overuse">Resources overutilized</option>
-              <option value="underuse">Resources underutilized</option>
-                          <option value="uninstall">Uninstall problem</option>
-                          <option value="web_control">Web Control defect</option>
-                        </select>
-                </td></tr>
-                <tr class="description">
-          <td colspan="2"><b>Please provide a brief description:</b>
-            <textarea name="description" rows="4" maxlength="1024"
-                      ></textarea>
-          </td>
-        </tr>
-          </table>
-          <input name="ts" type="hidden"/>
-          <input name="log" type="hidden"/>
-        </form>
-        <div id="bug-disclaimer">
-          <p>
-                <b>Disclaimer:</b> When you submit this form your
-                Folding@home user name, team, all or portions of the log
-                files produced by the Folding@home software and all the
-                information you provide in this form will be stored
-        indefinitely on servers at Folding@home.  Your IP
-                address will be logged but not made public.  <b>Do not
-                  include passwords, copyrighted material or any other
-                  information which you do not want to be made public.
-                </b>
-          </p>
-          <p>
-                By submitting this form you acknowledge that you are
-                making said information publicly available on the Internet
-        and agree to let Folding@home.org, it's partners and members of
-                foldingforum.org use said information for the purpose of
-                improving the Folding@home software.  The collected
-                information will not be used for advertising or tracking
-                your activity.  If you do not agree with these terms
-                please do not submit this forum and instead press the
-                Cancel button now.
-          </p>
-        </div>
-    <p>To see a list of bug reports submitted from this IP address click
-      <a href="https://apps.foldingathome.org/bugreport.php">here</a>.</p>
-  </div>
 
   <div id="unconfigured">
         <h2>Welcome to Folding@home. Please read this.</h2>
