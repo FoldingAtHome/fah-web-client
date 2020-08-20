@@ -38,11 +38,13 @@ var fah = {
   status_msg: {
     running: 'All systems go.',
     paused: 'Waiting for the computer to idle.',
-    stopping: ' Click Start Folding to continue folding again.',
+    stopping: 'Click Start Folding to continue folding again.',
     download: 'Getting a new Work Unit from Folding@home.',
     upload: 'Work unit completed!  Uploading to Folding@home.',
     ready: 'Ready.',
-    finishing: 'Will pause once the current Work Unit is completed.'
+    finishing: 'Will pause once the current Work Unit is completed.',
+    disabled: 'Get help at <a target="_blank" ' +
+      'href="https:://foldingforum.org/">foldingforum.org</a>.'
   }
 };
 
@@ -428,16 +430,20 @@ function update_slot(entry) {
   if (entry.status !== slot.status || entry.reason !== slot.reason) {
     if (is_active_slot(id)) set_status_msg(entry.status, entry.reason);
 
-    var statusBoxes = {'RUNNING':'run',
-                       'PAUSED': 'pause',
-                       'DOWNLOADING': 'download',
-                       'UPLOADING': 'upload',
-                       'STOPPING': 'stop',
-                       'FINISHING': 'finish',
-                       'READY': 'pause'};
+    var statusBoxes = {
+      RUNNING: 'run',
+      PAUSED: 'pause',
+      DOWNLOADING: 'download',
+      UPLOADING: 'upload',
+      STOPPING: 'stop',
+      FINISHING: 'finish',
+      READY: 'pause',
+      DISABLED: 'disabled'
+    };
     var circle = slot.tab.find('.circle');
     for (var i in statusBoxes) circle.removeClass(statusBoxes[i]);
     circle.addClass(statusBoxes[entry.status]);
+    circle.prop('title', 'Folding slot ' + entry.status);
 
     slot.status = entry.status;
     slot.reason = entry.reason;
@@ -892,6 +898,10 @@ var fah_create_client = (function() {
     send_command({url: 'api/set', data: {'pause': pause}});
   };
 
+  fah_create_client.prototype.set_finish = function(finish) {
+    send_command({url: 'api/set', data: {'finish': finish}});
+  };
+
   fah_create_client.prototype.set_idle = function(idle) {
     send_command({url: 'api/set', data: {'idle': idle}});
   };
@@ -1014,14 +1024,9 @@ function set_power(power) {
 }
 
 
-function set_pause(pause) {
-  fah.client.set_pause(pause);
-}
-
-
-function set_idle(idle) {
-  fah.client.set_idle(idle);
-}
+function set_pause(pause) {fah.client.set_pause(pause);}
+function set_finish(finish) {fah.client.set_finish(finish);}
+function set_idle(idle) {fah.client.set_idle(idle);}
 
 
 function set_identity() {
@@ -1100,6 +1105,7 @@ function main(sid) {
 
   $('#stop-popup .cancel').on('click', function(e) {
     e.preventDefault();
+    set_finish(true);
     $('#stop-popup').dialog('destroy');
   });
 

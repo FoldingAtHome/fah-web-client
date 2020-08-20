@@ -573,7 +573,7 @@ a.btn:hover {background: #ddd;}
 .box-pu li .download span {
     background: url(../images/template/anim_download.gif) no-repeat 10px 10px;
 }
-.box-pu li .stop {
+.box-pu li .stop, .box-pu li .disabled {
     background: #e03131;
     background-image:
     -webkit-gradient(linear, left top, left bottom, from(#fb8484), to(#e03131));
@@ -584,6 +584,9 @@ a.btn:hover {background: #ddd;}
     background-image: linear-gradient(#fb8484, #e03131);
 }
 .box-pu li .stop span {background: none}
+.box-pu li .disabled span {
+  background: url(../images/template/disabled.png) no-repeat 11px 14px;
+}
 .box-pu li .pause, .box-pu li .finish {
     background: #e8b70c;
     background-image:
