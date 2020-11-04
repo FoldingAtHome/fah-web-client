@@ -44,7 +44,7 @@ var fah = {
     ready: 'Ready.',
     finishing: 'Will pause once the current Work Unit is completed.',
     disabled: 'Get help at <a target="_blank" ' +
-      'href="https:://foldingforum.org/">foldingforum.org</a>.'
+      'href="https://foldingforum.org/">foldingforum.org</a>.'
   }
 };
 
