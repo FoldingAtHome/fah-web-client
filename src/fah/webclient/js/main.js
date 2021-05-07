@@ -275,10 +275,13 @@ function update_stats(data) {
     $('#box-points-counter-team').text(number_with_commas(data.team_total));
 
     var team_name = data.team_name ? data.team_name : fah.team;
-    if (typeof data.team_url != 'undefined')
-      team_name = '<a target="_blank" href="' + data.team_url + '">' +
-      team_name + '</a>';
-    $('#box-points-team').html(team_name);
+    if (data.team_url != undefined)
+      team_name = $('<a>', {
+        text: team_name,
+        href: data.team_url,
+        target: '_blank'
+      });
+    $('#box-points-team').text(team_name);
 
     $('#team-points').css({'display': 'block'});
     $('#no-team').css({'display': 'none'});
@@ -327,15 +330,18 @@ function is_active_slot(id) {
 
 
 function set_status_msg(status, reason) {
+  var msg
   status = status.toLowerCase();
+
   if (typeof reason != 'undefined' && reason != '' && status == 'paused')
-    status_msg = reason;
+    msg = reason;
   else if (status in fah.status_msg)
-    status_msg = fah.status_msg[status];
-  else status_msg = '';
+    msg = fah.status_msg[status];
+  else msg = '';
 
   $('#box-status-msg')
-    .html('<span class="hlarge">' + status + '</span>' + status_msg);
+    .append($('<span>', {class: 'hlarge'}).text(status))
+    .append(document.createTextNode(msg));
 }
 
 
@@ -582,34 +588,39 @@ function update_project(p) {
   var project;
   var description;
 
-  if (typeof p.error != 'undefined') {
+  if (p.error != undefined) {
     project = '<strong>' + p.error + '</strong>';
     description = project;
 
   } else {
-    // Shorten description if necessary
-    var pbrief
-    if (fah.max_project_brief - 3 < p.pdesc.length)
-      pbrief = p.pdesc.substr(0, fah.max_project_brief - 3) + '...';
-    else pbrief = p.pdesc;
+    project = [
+      $('<p>')
+        .append('I\'m contributing to ')
+        .append($('<span>', {class: 'hlarge'})
+                .append('Project ' + p.id)),
+      $('<div>', {class: 'project-brief'}).html(p.pdesc),
+      $('<a>', {href: 'javascript:void(0)'})
+        .click(function () {show_project_description(p.id); return false})
+        .text('Learn more')
+    ];
 
-    project =
-      '<p>I\'m contributing to <span class="hlarge">Project ' + p.id +
-      '</span></p>' + pbrief + ' <a href="javascript:void(0)" ' +
-      'onclick="show_project_description(' + p.id + '); return false;">' +
-      'Learn more</a>';
-
-    description = '<h2>Project ' + p.id + '</h2>' +
-      (typeof p.pthumb != 'undefined' && p.pthumb != '' ?
-       ('<img src="data:;base64, ' + p.pthumb + '"/>') : '') +
-      '<p>Disease Type: ' + p.disease + '</p>' + p.pdesc + '<br/>' +
-      '<strong>This project is managed by ' + p.name + ' at ' + p.uni +
-      '.</strong>' + (p.url != '' ? ('<p>URL: <a href="' + p.url + '">' +
-                                     p.url + '</a></p>') : '') +
-      (p.mthumb != '' ?
-       ('<div><img src="data:;base64, ' + p.mthumb + '"/></div>') : '') +
-      p.mdesc + '<div class="center"> <a href="#" ' +
-      'class="button green done">Done</a></div>';
+    description = [
+      $('<h2>').text('Project ' + p.id),
+      p.pthumb ? $('<img>', {src: 'data:;base64, ' + p.pthumb}) : '',
+      $('<p>').text('Disease Type: ' + p.disease),
+      p.pdesc,
+      $('<br>'),
+      $('<strong>').text('This project is managed by ' + p.name + ' at ' +
+                         p.uni + '.'),
+      p.url ? $('<p>')
+       .append('URL: ')
+       .append($('<a>', {href: p.url, text: p.url})) : '',
+      p.mthumb ?
+        $('<div>').append('<img>', {src: 'data:;base64, ' + p.mthumb}) : '',
+      p.mdesc,
+      $('<div>', {class: 'center'})
+        .append($('<a>', {href: '#', class: 'button green done', text: 'Done'}))
+    ];
   }
 
   fah.projects[p.id] = project;
@@ -631,7 +642,7 @@ function add_project(id) {
   if (!id || fah.projects[id] || fah.version == null) return;
 
   if (is_active_project(id))
-    $('#box-project').html('Loading...');
+    $('#box-project').text('Loading...');
 
   $.ajax({
     url: fah.project_url,
@@ -641,7 +652,7 @@ function add_project(id) {
     dataType: 'jsonp',
     success: dispatch,
     error: function () {
-      $('#box-project').html('No information.');
+      $('#box-project').text('No information.');
     }
   });
 }
