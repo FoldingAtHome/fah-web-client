@@ -593,6 +593,10 @@ function update_project(p) {
     description = project;
 
   } else {
+    // Prevent <script> in description HTML
+    if (/<script/.test(p.desc)) p.pdesc = 'Invalid';
+    if (/<script/.test(m.desc)) m.pdesc = 'Invalid';
+
     project = [
       $('<p>')
         .append('I\'m contributing to ')
