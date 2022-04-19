@@ -1228,5 +1228,5 @@ function main(sid) {
 
 
 $(function () {
-  $.ajax({method: 'PUT', url: '/api/session?_=' + Math.random()}).done(main)
+  $.ajax({method: 'PUT', url: 'api/session?_=' + Math.random()}).done(main)
 });
